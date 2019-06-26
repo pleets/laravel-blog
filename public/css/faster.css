@@ -1,0 +1,303 @@
+@charset "utf-8";
+
+#app-loader {
+    position: fixed; top: 50%; left: 50%;
+    margin-left: -100px; margin-top: -100px;
+    width: 200px; z-index: 1000;
+}
+
+.dialog-icon {
+    font-size: 25px;
+    float: left;
+    margin-right: 20px;
+}
+
+.responsive-image {
+    max-width: 100%;
+}
+
+@media (max-width: 720px) {
+    .responsive-image {
+        width: 100%;
+    }
+}
+
+.logoenertol {
+    width: 319px; margin-top: 5px
+}
+
+#logo, #logo2 {
+    margin-top: 0px;
+}
+
+#logo img {
+    width: 244px;
+}
+
+@media (max-width: 720px) {
+    #logo {
+        margin-top: 12px;
+    }
+
+    #logo img {
+        width: 130px;
+    }
+
+    #login-form header {
+        display: none;
+    }
+
+    .to-table-view {
+        display: none;
+    }
+}
+
+img#logo2 {
+    width: 80px;
+    margin: 5px 0 0 5px;
+}
+
+.table-responsive .btn-group.btn-group-justified
+{
+    table-layout: auto;
+    display: inline-block;
+    width: auto;
+}
+
+img[src='img/preloader.gif']
+{
+    margin: 20px;
+}
+
+.smart-form .select2-container .select2-choice, .select2-selection
+{
+    padding: 0 8px;
+}
+
+.smart-form .ui-spinner-input.spinner-left
+{
+    padding: 0px 0px 0px 24px;
+}
+
+.ui-state-hover {
+    border: none !important;
+}
+
+.smart-form .select2-selection__choice
+{
+    padding: 1px 28px 1px 8px;
+    margin: 4px 0 3px 5px;
+}
+
+.smart-form .select2-container-multi .select2-search-choice-close,
+.smart-form .select2-selection__choice__remove
+{
+    margin: 0;
+    padding: 3px 4px 3px 6px;
+     -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.smart-form .select2-container-multi .select2-search-choice-close:hover,
+.smart-form .select2-selection__choice__remove:hover
+{
+     -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ul.pagination.pagination-alt.pagination-lg {
+    display: block;
+    max-height: 90px;
+    overflow-y: auto;
+    position: relative;
+}
+
+@media screen and (max-width: 600px) {
+   .smart-form .col.ignore-smart
+   {
+       float: left;
+       width: auto;
+   }
+
+   .smart-form .col.ignore-smart.col-1 { width: 8.33%; }
+   .smart-form .col.ignore-smart.col-2 { width: 20%; }
+   .smart-form .col.ignore-smart.col-3 { width: 25%; }
+   .smart-form .col.ignore-smart.col-4 { width: 33.33%; }
+   .smart-form .col.ignore-smart.col-5 { width: 41.66%; }
+   .smart-form .col.ignore-smart.col-6 { width: 50%; }
+   .smart-form .col.ignore-smart.col-7 { width: 58.31%; }
+   .smart-form .col.ignore-smart.col-8 { width: 66.67%; }
+   .smart-form .col.ignore-smart.col-9 { width: 75%; }
+   .smart-form .col.ignore-smart.col-10 { width: 83.33%; }
+   .smart-form .col.ignore-smart.col-11 { width: 91.63%; }
+   .smart-form .col.ignore-smart.col-12 { width: 100%; }
+}
+
+#extr-page #header {
+    background: white !important;
+}
+
+.delius-unicase
+{
+    font-family: "Delius Unicase", cursive;
+}
+
+.delius-unicase.px12
+{
+    font-size: 12px !important;
+}
+
+.select2-search input
+{
+  margin-left: 5px;
+}
+
+form.smart-form .icon-append.fa-plus.selectable,
+form.smart-form .icon-append.fa-search.selectable
+{
+    color: #3276b1;
+    cursor: pointer;
+}
+
+form.smart-form .icon-append.fa-plus.selectable:hover,
+form.smart-form .icon-append.fa-search.selectable:hover {
+    color: #0d3558;
+}
+
+form.smart-form input[disabled],
+form.smart-form input[readonly] {
+    background: #e8e8e8 !important;
+}
+
+.form-group.has-error .input input,
+.form-group.has-error .select2-selection {
+    border-color: #b94a48;
+    border: solid 1px #b94a48;
+    outline: none;
+}
+
+.form-group.has-error .input .ui-spinner
+{
+    border: solid 1px #b94a48;
+}
+
+.form-group.has-error .input .ui-spinner input
+{
+    border: none;
+}
+
+form.loading::before {
+    content: '';
+    background: rgba(255,255,255,0.7);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+form.loading::after {
+    content: 'Loading ...';
+    background: rgba(71, 1, 38, 0.9);
+    display: flex; flex-direction: column; justify-content: space-around;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    margin-left: -75px;
+    margin-top: -75px;
+    border-radius: 100px;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+}
+
+@-webkit-keyframes form-loader-colors {
+  0%  { background: #53b099; -webkit-transform: scale(1,1); }
+  10%  { background: #53b099; -webkit-transform: scale(0.8,0.8); }
+  20% { background: #c31b73; -webkit-transform: scale(1,1); }
+  40% { background: #ea5b1a; -webkit-transform: scale(0.5,0.5); }
+  60% { background: #054b64; -webkit-transform: scale(1,1); }
+  80% { background: #22adde; -webkit-transform: scale(0.5,0.5); }
+  80% { -webkit-transform: scale(1,1); }
+}
+
+form.loading::after {
+  -webkit-animation: form-loader-colors 5s;
+  -moz-animation: form-loader-colors 5s;
+  -ms-animation: form-loader-colors 5s;
+  -o-animation: form-loader-colors 5s;
+  animation: form-loader-colors 5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+form.guardado
+{
+    border-left: dashed 2px #739e73;
+    border-right: dashed 2px #739e73;
+}
+
+form.guardado::before
+{
+    content: 'Changes saved';
+    background: #739e73;
+    padding: 8px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    padding-left: 15px;
+}
+
+form.guardado::after
+{
+    content: '';
+    width: 2px; height: 2px;
+    background: #739e73;
+    padding: 8px;
+    color: white;
+    position: absolute;
+    bottom: 11px;
+    left: 3px;
+    transform: rotateZ(45deg);
+}
+
+form.error
+{
+    border-left: dashed 2px #a90329;
+    border-right: dashed 2px #a90329;
+}
+
+form.error::before
+{
+    content: 'Form with errors';
+    background: #a90329;
+    padding: 8px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    padding-left: 15px;
+}
+
+form.error::after
+{
+    content: '';
+    width: 2px; height: 2px;
+    background: #a90329;
+    padding: 8px;
+    color: white;
+    position: absolute;
+    bottom: 11px;
+    left: 3px;
+    transform: rotateZ(45deg);
+}

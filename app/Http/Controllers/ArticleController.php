@@ -1,0 +1,88 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Post;
+use App\Category;
+
+class ArticleController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['new', 'edit', 'save']);
+    }
+
+    public function read($title)
+    {
+        $title = hash('md5', $title);
+        $post = Post::where('url_hash', $title)->firstOrFail();
+
+        $categories = Category::all();
+
+        return view('article.read', ['post' => $post, 'categories' => $categories]);
+    }
+
+    public function new()
+    {
+        $post = new Post();
+        $categories = Category::all();
+
+        $categoriesDropDown = [];
+        foreach ($categories as $category) {
+            $categoriesDropDown[$category->category_id] = $category->name;
+        }
+
+        return view('article.edit', ['post' => $post, 'categories' => $categoriesDropDown]);
+    }
+
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+
+        $categoriesDropDown = [];
+        foreach ($categories as $category) {
+            $categoriesDropDown[$category->category_id] = $category->name;
+        }
+
+        return view('article.edit', ['post' => $post, 'categories' => $categoriesDropDown]);
+    }
+
+    public function save(Request $request)
+    {
+        if (is_null($request->input('post_id'))) {
+            $post = new Post();
+            $post->author_id = Auth::user()->user_id;
+        } else {
+            $post = Post::findOrFail($request->input('post_id'));
+        }
+
+        $post->title        = $request->input('title');
+        $post->category_id  = $request->input('category');
+        $post->content      = $request->input('content');
+        $post->description  = $request->input('description');
+        $post->image        = $request->input('image');
+        $post->url_path     = $request->input('url');
+        $post->url_hash     = hash('md5', $request->input('url'));
+        $post->published_at = $request->input('published_at');
+        $post->updated_at   = date('Y-m-d h:i:s');
+        $post->save();
+
+        if (is_null($request->input('post_id'))) {
+            return [
+                'process'     => 'success',
+                'post_id'     => $post->post_id,
+                'redirect_to' => route('article.edit', $post->post_id)
+            ];
+        } else {
+            return ['process' => 'success'];
+        }
+    }
+}
