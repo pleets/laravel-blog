@@ -59,7 +59,8 @@ class ArticleController extends Controller
     {
         if (is_null($request->input('post_id'))) {
             $post = new Post();
-            $post->author_id = Auth::user()->user_id;
+            // TODO: Handle when author does not exists
+            $post->author_id = Auth::user()->author->author_id;
         } else {
             $post = Post::findOrFail($request->input('post_id'));
         }
