@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-sm-9">
             <article>
-                <h2 style="font-family: Nunito">{{ $post->title }}</h2>
+                <h1 style="font-family: 'Fjalla One', sans-serif;" class="pltsword">{{ $post->title }}</h1>
                 <div>
                     <span class="badge badge-success">{{ $post->published_at }}</span>
                     <span class="badge badge-primary">{{ $post->category->name }}</span>
