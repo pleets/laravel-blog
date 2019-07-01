@@ -30,5 +30,3 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
-
-window.ClassicEditor = require( '@ckeditor/ckeditor5-build-classic' );

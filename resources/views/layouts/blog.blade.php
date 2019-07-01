@@ -38,6 +38,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/faster.css') }}" rel="stylesheet">
 
+    <!-- CKEDITOR -->
+    <script src="//cdn.ckeditor.com/4.12.1/full/ckeditor.js"></script>
 </head>
 <body>
     <div id="app">
