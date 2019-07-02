@@ -32,7 +32,11 @@ const app = new Vue({
 });
 
 import hljs from 'highlight.js/lib/highlight';
-import javascript from 'highlight.js/lib/languages/javascript';
-hljs.registerLanguage('shell', javascript);
+
+import shell from 'highlight.js/lib/languages/shell';
+hljs.registerLanguage('shell', shell);
+
+import properties from 'highlight.js/lib/languages/properties';
+hljs.registerLanguage('shell', properties);
 
 window.hljs = hljs;

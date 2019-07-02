@@ -7122,187 +7122,105 @@ https://highlightjs.org/
 
 /***/ }),
 
-/***/ "./node_modules/highlight.js/lib/languages/javascript.js":
+/***/ "./node_modules/highlight.js/lib/languages/properties.js":
 /*!***************************************************************!*\
-  !*** ./node_modules/highlight.js/lib/languages/javascript.js ***!
+  !*** ./node_modules/highlight.js/lib/languages/properties.js ***!
   \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
-  var IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
-  var KEYWORDS = {
-    keyword:
-      'in of if for while finally var new function do return void else break catch ' +
-      'instanceof with throw case default try this switch continue typeof delete ' +
-      'let yield const export super debugger as async await static ' +
-      // ECMAScript 6 modules import
-      'import from as'
-    ,
-    literal:
-      'true false null undefined NaN Infinity',
-    built_in:
-      'eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent ' +
-      'encodeURI encodeURIComponent escape unescape Object Function Boolean Error ' +
-      'EvalError InternalError RangeError ReferenceError StopIteration SyntaxError ' +
-      'TypeError URIError Number Math Date String RegExp Array Float32Array ' +
-      'Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array ' +
-      'Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require ' +
-      'module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect ' +
-      'Promise'
-  };
-  var NUMBER = {
-    className: 'number',
-    variants: [
-      { begin: '\\b(0[bB][01]+)' },
-      { begin: '\\b(0[oO][0-7]+)' },
-      { begin: hljs.C_NUMBER_RE }
-    ],
-    relevance: 0
-  };
-  var SUBST = {
-    className: 'subst',
-    begin: '\\$\\{', end: '\\}',
-    keywords: KEYWORDS,
-    contains: []  // defined later
-  };
-  var TEMPLATE_STRING = {
-    className: 'string',
-    begin: '`', end: '`',
-    contains: [
-      hljs.BACKSLASH_ESCAPE,
-      SUBST
-    ]
-  };
-  SUBST.contains = [
-    hljs.APOS_STRING_MODE,
-    hljs.QUOTE_STRING_MODE,
-    TEMPLATE_STRING,
-    NUMBER,
-    hljs.REGEXP_MODE
-  ];
-  var PARAMS_CONTAINS = SUBST.contains.concat([
-    hljs.C_BLOCK_COMMENT_MODE,
-    hljs.C_LINE_COMMENT_MODE
-  ]);
+
+  // whitespaces: space, tab, formfeed
+  var WS0 = '[ \\t\\f]*';
+  var WS1 = '[ \\t\\f]+';
+  // delimiter
+  var DELIM = '(' + WS0+'[:=]'+WS0+ '|' + WS1 + ')';
+  var KEY_ALPHANUM = '([^\\\\\\W:= \\t\\f\\n]|\\\\.)+';
+  var KEY_OTHER = '([^\\\\:= \\t\\f\\n]|\\\\.)+';
+
+  var DELIM_AND_VALUE = {
+          // skip DELIM
+          end: DELIM,
+          relevance: 0,
+          starts: {
+            // value: everything until end of line (again, taking into account backslashes)
+            className: 'string',
+            end: /$/,
+            relevance: 0,
+            contains: [
+              { begin: '\\\\\\n' }
+            ]
+          }
+        };
 
   return {
-    aliases: ['js', 'jsx'],
-    keywords: KEYWORDS,
+    case_insensitive: true,
+    illegal: /\S/,
+    contains: [
+      hljs.COMMENT('^\\s*[!#]', '$'),
+      // key: everything until whitespace or = or : (taking into account backslashes)
+      // case of a "normal" key
+      {
+        begin: KEY_ALPHANUM + DELIM,
+        returnBegin: true,
+        contains: [
+          {
+            className: 'attr',
+            begin: KEY_ALPHANUM,
+            endsParent: true,
+            relevance: 0
+          }
+        ],
+        starts: DELIM_AND_VALUE
+      },
+      // case of key containing non-alphanumeric chars => relevance = 0
+      {
+        begin: KEY_OTHER + DELIM,
+        returnBegin: true,
+        relevance: 0,
+        contains: [
+          {
+            className: 'meta',
+            begin: KEY_OTHER,
+            endsParent: true,
+            relevance: 0
+          }
+        ],
+        starts: DELIM_AND_VALUE
+      },
+      // case of an empty key
+      {
+        className: 'attr',
+        relevance: 0,
+        begin: KEY_OTHER + WS0 + '$'
+      }
+    ]
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/highlight.js/lib/languages/shell.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/shell.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function(hljs) {
+  return {
+    aliases: ['console'],
     contains: [
       {
         className: 'meta',
-        relevance: 10,
-        begin: /^\s*['"]use (strict|asm)['"]/
-      },
-      {
-        className: 'meta',
-        begin: /^#!/, end: /$/
-      },
-      hljs.APOS_STRING_MODE,
-      hljs.QUOTE_STRING_MODE,
-      TEMPLATE_STRING,
-      hljs.C_LINE_COMMENT_MODE,
-      hljs.C_BLOCK_COMMENT_MODE,
-      NUMBER,
-      { // object attr container
-        begin: /[{,]\s*/, relevance: 0,
-        contains: [
-          {
-            begin: IDENT_RE + '\\s*:', returnBegin: true,
-            relevance: 0,
-            contains: [{className: 'attr', begin: IDENT_RE, relevance: 0}]
-          }
-        ]
-      },
-      { // "value" container
-        begin: '(' + hljs.RE_STARTERS_RE + '|\\b(case|return|throw)\\b)\\s*',
-        keywords: 'return throw case',
-        contains: [
-          hljs.C_LINE_COMMENT_MODE,
-          hljs.C_BLOCK_COMMENT_MODE,
-          hljs.REGEXP_MODE,
-          {
-            className: 'function',
-            begin: '(\\(.*?\\)|' + IDENT_RE + ')\\s*=>', returnBegin: true,
-            end: '\\s*=>',
-            contains: [
-              {
-                className: 'params',
-                variants: [
-                  {
-                    begin: IDENT_RE
-                  },
-                  {
-                    begin: /\(\s*\)/,
-                  },
-                  {
-                    begin: /\(/, end: /\)/,
-                    excludeBegin: true, excludeEnd: true,
-                    keywords: KEYWORDS,
-                    contains: PARAMS_CONTAINS
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            className: '',
-            begin: /\s/,
-            end: /\s*/,
-            skip: true,
-          },
-          { // E4X / JSX
-            begin: /</, end: /(\/[A-Za-z0-9\\._:-]+|[A-Za-z0-9\\._:-]+\/)>/,
-            subLanguage: 'xml',
-            contains: [
-              { begin: /<[A-Za-z0-9\\._:-]+\s*\/>/, skip: true },
-              {
-                begin: /<[A-Za-z0-9\\._:-]+/, end: /(\/[A-Za-z0-9\\._:-]+|[A-Za-z0-9\\._:-]+\/)>/, skip: true,
-                contains: [
-                  { begin: /<[A-Za-z0-9\\._:-]+\s*\/>/, skip: true },
-                  'self'
-                ]
-              }
-            ]
-          }
-        ],
-        relevance: 0
-      },
-      {
-        className: 'function',
-        beginKeywords: 'function', end: /\{/, excludeEnd: true,
-        contains: [
-          hljs.inherit(hljs.TITLE_MODE, {begin: IDENT_RE}),
-          {
-            className: 'params',
-            begin: /\(/, end: /\)/,
-            excludeBegin: true,
-            excludeEnd: true,
-            contains: PARAMS_CONTAINS
-          }
-        ],
-        illegal: /\[|%/
-      },
-      {
-        begin: /\$[(.]/ // relevance booster for a pattern common to JS libs: `$(something)` and `$.something`
-      },
-      hljs.METHOD_GUARD,
-      { // ES6 class
-        className: 'class',
-        beginKeywords: 'class', end: /[{;=]/, excludeEnd: true,
-        illegal: /[:"\[\]]/,
-        contains: [
-          {beginKeywords: 'extends'},
-          hljs.UNDERSCORE_TITLE_MODE
-        ]
-      },
-      {
-        beginKeywords: 'constructor get set', end: /\{/, excludeEnd: true
+        begin: '^\\s{0,3}[\\w\\d\\[\\]()@-]*[>%$#]',
+        starts: {
+          end: '$', subLanguage: 'bash'
+        }
       }
-    ],
-    illegal: /#(?!!)/
-  };
+    ]
+  }
 };
 
 /***/ }),
@@ -50340,8 +50258,10 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var highlight_js_lib_highlight__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! highlight.js/lib/highlight */ "./node_modules/highlight.js/lib/highlight.js");
 /* harmony import */ var highlight_js_lib_highlight__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(highlight_js_lib_highlight__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var highlight_js_lib_languages_javascript__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! highlight.js/lib/languages/javascript */ "./node_modules/highlight.js/lib/languages/javascript.js");
-/* harmony import */ var highlight_js_lib_languages_javascript__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(highlight_js_lib_languages_javascript__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var highlight_js_lib_languages_shell__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! highlight.js/lib/languages/shell */ "./node_modules/highlight.js/lib/languages/shell.js");
+/* harmony import */ var highlight_js_lib_languages_shell__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(highlight_js_lib_languages_shell__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var highlight_js_lib_languages_properties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! highlight.js/lib/languages/properties */ "./node_modules/highlight.js/lib/languages/properties.js");
+/* harmony import */ var highlight_js_lib_languages_properties__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(highlight_js_lib_languages_properties__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -50372,7 +50292,9 @@ var app = new Vue({
 });
 
 
-highlight_js_lib_highlight__WEBPACK_IMPORTED_MODULE_0___default.a.registerLanguage('shell', highlight_js_lib_languages_javascript__WEBPACK_IMPORTED_MODULE_1___default.a);
+highlight_js_lib_highlight__WEBPACK_IMPORTED_MODULE_0___default.a.registerLanguage('shell', highlight_js_lib_languages_shell__WEBPACK_IMPORTED_MODULE_1___default.a);
+
+highlight_js_lib_highlight__WEBPACK_IMPORTED_MODULE_0___default.a.registerLanguage('shell', highlight_js_lib_languages_properties__WEBPACK_IMPORTED_MODULE_2___default.a);
 window.hljs = highlight_js_lib_highlight__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 /***/ }),
