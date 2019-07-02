@@ -30,3 +30,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+import hljs from 'highlight.js/lib/highlight';
+import javascript from 'highlight.js/lib/languages/javascript';
+hljs.registerLanguage('shell', javascript);
+
+window.hljs = hljs;

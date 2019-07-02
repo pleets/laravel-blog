@@ -44,6 +44,8 @@
 
     <!-- CKEDITOR -->
     <script src="//cdn.ckeditor.com/4.12.1/full/ckeditor.js"></script>
+
+    <link href="{{ asset('css/monokai-sublime.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
