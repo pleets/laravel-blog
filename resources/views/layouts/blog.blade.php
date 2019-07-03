@@ -22,7 +22,7 @@
     <meta content='{{ config('app.fb_app_id') }}' property='fb:app_id'/>
     <meta content='@yield('meta_title', $title) - {{ config('app.name', 'Laravel') }}' property='og:title'/>
     <meta content='@yield('fb_image')' property="og:image" />
-    <meta content='{{ url('/') }}' property="og:url" />
+    <meta content='{{ url()->current() }}' property="og:url" />
     <meta content='@yield('meta_description', $description)' property='og:description'/>
 
     <!-- Scripts -->
