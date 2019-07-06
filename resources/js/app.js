@@ -40,6 +40,12 @@ hljs.registerLanguage('shell', shell);
 import properties from 'highlight.js/lib/languages/properties';
 hljs.registerLanguage('shell', properties);
 
+import apache from 'highlight.js/lib/languages/apache';
+hljs.registerLanguage('apache', apache);
+
+import php from 'highlight.js/lib/languages/php';
+hljs.registerLanguage('apache', php);
+
 window.hljs = hljs;
 
 require('trumbowyg');
