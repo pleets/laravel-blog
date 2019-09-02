@@ -15,6 +15,15 @@
                     <span class="badge badge-success">{{ $post->published_at }}</span>
                     <span class="badge badge-primary">{{ $post->category->name }}</span>
                 </div>
+                @if ($post->tags->count())
+                    <div>
+                        Tags &nbsp;
+                        @foreach ($post->tags as $tag)
+                            <span class="badge badge-light">{{ $tag->name }}</span>
+                        @endforeach
+                    </div>
+                @endif
+                <br />
                 {!! $post->content !!}
                 <footer class="pt-5">
                     <h4>Acerca de {{ $post->author->user->name }}</h4>

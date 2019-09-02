@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('published_at', 'desc')->take(10)->get();
+        $posts = Post::orderBy('published_at', 'desc')->get();
         $categories = Category::all();
         return view('blog.index', ['posts' => $posts, 'categories' => $categories]);
     }

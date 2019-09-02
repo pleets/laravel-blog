@@ -25,6 +25,11 @@
                         <div>
                             <span class="badge badge-success">{{ $post->published_at }}</span>
                             <span class="badge badge-primary">{{ $post->category->name }}</span>
+                            @if ($post->tags->count())
+                                @foreach ($post->tags as $tag)
+                                    <span class="badge badge-light">{{ $tag->name }}</span>
+                                @endforeach
+                            @endif
                         </div>
                         <p class="text-justify">
                             {!! substr(strip_tags($post->content), 0, 256) . '...' !!}

@@ -27,6 +27,16 @@
                         </div>
                     </div>
                     <div class="form-row">
+                        <div class="form-group col-sm-6">
+                            {{ Form::label('tags', 'Tags') }}
+                            {{ Form::select('tags[]', $tags, $post->tags->pluck('tag_id'), [
+                                'class' => 'custom-select',
+                                'multiple' => 'multiple',
+                                'size' => 3
+                                ]) }}
+                        </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group col-sm-12">
                             {{ Form::label('content', 'Post content') }}
                             {{ Form::textarea('content', $post->content, ['class' => 'form-control']) }}

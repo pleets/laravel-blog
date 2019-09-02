@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Category;
+use App\Tag;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -44,15 +45,25 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $post       = Post::findOrFail($id);
         $categories = Category::all();
+        $tags       = Tag::all();
 
         $categoriesDropDown = [];
         foreach ($categories as $category) {
             $categoriesDropDown[$category->category_id] = $category->name;
         }
 
-        return view('article.edit', ['post' => $post, 'categories' => $categoriesDropDown]);
+        $tagsDropDown = [];
+        foreach ($tags as $tag) {
+            $tagsDropDown[$tag->tag_id] = $tag->name;
+        }
+
+        return view('article.edit', [
+            'post'       => $post,
+            'categories' => $categoriesDropDown,
+            'tags'       => $tagsDropDown
+        ]);
     }
 
     public function save(Request $request)
@@ -74,6 +85,12 @@ class ArticleController extends Controller
         $post->url_hash     = hash('md5', $request->input('url'));
         $post->published_at = $request->input('published_at');
         $post->updated_at   = date('Y-m-d h:i:s');
+
+        $tags = $request->input('tags')
+            ? Tag::whereIn('tag_id', $request->input('tags'))->get()
+            : [];
+
+        $post->tags()->sync($tags);
         $post->save();
 
         if (is_null($request->input('post_id'))) {
