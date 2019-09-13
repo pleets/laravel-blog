@@ -34,13 +34,23 @@ class ArticleController extends Controller
     {
         $post = new Post();
         $categories = Category::all();
+        $tags       = Tag::all();
 
         $categoriesDropDown = [];
         foreach ($categories as $category) {
             $categoriesDropDown[$category->category_id] = $category->name;
         }
 
-        return view('article.edit', ['post' => $post, 'categories' => $categoriesDropDown]);
+        $tagsDropDown = [];
+        foreach ($tags as $tag) {
+            $tagsDropDown[$tag->tag_id] = $tag->name;
+        }
+
+        return view('article.edit', [
+            'post'       => $post,
+            'categories' => $categoriesDropDown,
+            'tags'       => $tagsDropDown
+        ]);
     }
 
     public function edit($id)
@@ -86,14 +96,22 @@ class ArticleController extends Controller
         $post->published_at = $request->input('published_at');
         $post->updated_at   = date('Y-m-d h:i:s');
 
-        $tags = $request->input('tags')
-            ? Tag::whereIn('tag_id', $request->input('tags'))->get()
-            : [];
+        if (!is_null($request->input('post_id'))) {
+            $tags = $request->input('tags')
+                ? Tag::whereIn('tag_id', $request->input('tags'))->get()
+                : [];
+            $post->tags()->sync($tags);
+        }
 
-        $post->tags()->sync($tags);
         $post->save();
 
         if (is_null($request->input('post_id'))) {
+            $tags = $request->input('tags')
+                ? Tag::whereIn('tag_id', $request->input('tags'))->get()
+                : [];
+            $post->tags()->attach($tags);
+            $post->save();
+
             return [
                 'process'     => 'success',
                 'post_id'     => $post->post_id,
