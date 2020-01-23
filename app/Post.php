@@ -2,9 +2,6 @@
 
 namespace App;
 
-use App\Category;
-use App\Tag;
-use App\Author;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
