@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 
 class PostController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function read($title)
     {
-        $this->middleware('auth');
-    }
+        $title = hash('md5', $title);
+        $post = Post::where('url_hash', $title)->firstOrFail();
 
-    public function index()
-    {
-        $posts = Post::all();
+        $categories = Category::all();
 
-        return view('post.index', ['posts' => $posts]);
+        return view('posts.read', ['post' => $post, 'categories' => $categories]);
     }
 }

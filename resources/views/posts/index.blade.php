@@ -18,7 +18,7 @@
                 @foreach ($posts as $post)
                     <article>
                         <h2 style="font-family: Nunito">
-                            <a href="{{ route('post', ['title' => str_replace(' ', '-', $post->url_path)]) }}">
+                            <a href="{{ route('posts', ['title' => str_replace(' ', '-', $post->url_path)]) }}">
                                 {{ $post->title }}
                             </a>
                         </h2>

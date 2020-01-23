@@ -17,7 +17,7 @@ class BlogController extends Controller
         $posts = Post::orderBy('published_at', 'desc')->get();
         $categories = Category::all();
 
-        return view('blog.index', ['posts' => $posts, 'categories' => $categories]);
+        return view('posts.index', ['posts' => $posts, 'categories' => $categories]);
     }
 
     /**
@@ -32,7 +32,7 @@ class BlogController extends Controller
         $posts = Post::where('category_id', $category->category_id)->orderBy('published_at', 'desc')->get();
         $categories = Category::all();
 
-        return view('blog.index', [
+        return view('posts.index', [
             'posts' => $posts,
             'categories' => $categories,
             'showing' => $category,
