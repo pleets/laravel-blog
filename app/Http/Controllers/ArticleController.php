@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use App\Category;
+use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,7 +49,7 @@ class ArticleController extends Controller
         return view('article.edit', [
             'post'       => $post,
             'categories' => $categoriesDropDown,
-            'tags'       => $tagsDropDown
+            'tags'       => $tagsDropDown,
         ]);
     }
 
@@ -72,7 +72,7 @@ class ArticleController extends Controller
         return view('article.edit', [
             'post'       => $post,
             'categories' => $categoriesDropDown,
-            'tags'       => $tagsDropDown
+            'tags'       => $tagsDropDown,
         ]);
     }
 
@@ -115,7 +115,7 @@ class ArticleController extends Controller
             return [
                 'process'     => 'success',
                 'post_id'     => $post->post_id,
-                'redirect_to' => route('article.edit', $post->post_id)
+                'redirect_to' => route('article.edit', $post->post_id),
             ];
         } else {
             return ['process' => 'success'];
