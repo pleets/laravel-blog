@@ -5,7 +5,8 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-            <a href="{{ url('/article/new') }}" class="btn btn-success">New</a><br /><br />
+            <a href="{{ url('/admin/posts/new') }}" class="btn btn-success">New</a><br /><br />
+
             @if ($posts->count())
                 <table class="table">
                     <thead>
@@ -28,8 +29,8 @@
                                 <td>{{ $post->published_at }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('post', ['title' => str_replace(' ', '-', $post->url_path)]) }}" target="_blank" class="btn btn-success btn-sm">Ver</a>
-                                        <a href="{{ url('/article/edit') .'/'. $post->post_id }}" class="btn btn-primary btn-sm">Editar</a>
+                                        <a href="{{ route('posts', ['title' => str_replace(' ', '-', $post->url_path)]) }}" target="_blank" class="btn btn-success btn-sm">Ver</a>
+                                        <a href="{{ url('/admin/posts/edit') .'/'. $post->post_id }}" class="btn btn-primary btn-sm">Editar</a>
                                     </div>
                                 </td>
                             </tr>
