@@ -11,19 +11,19 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Auth::routes(['register' => false]);
+
+/* Admin routes */
+Route::namespace('Admin')
+    ->prefix('admin')
+    ->middleware('auth')
+    ->group(base_path('routes/admin/web.php'));
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'BlogController@index')->name('home');
 Route::get('/category/{id}', 'BlogController@category')->name('category');
+Route::get('/' . config('posts.posts_url') . '/{title}', 'PostController@read')->name('posts');
 
-Route::get('/article/new', 'ArticleController@new');
-Route::post('/article/save', 'ArticleController@save');
-Route::get('/article/{title}', 'ArticleController@read')->name('post');
-Route::get('/article/edit/{id}', 'ArticleController@edit')->name('article.edit');
-
-Route::get('/posts', 'PostController@index')->name('posts');
+Route::get('/ads.txt', function () {
+    return file_get_contents(base_path('ads.txt'));
+});

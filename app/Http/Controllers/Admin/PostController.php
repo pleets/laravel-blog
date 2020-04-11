@@ -1,33 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Post;
 use App\Category;
+use App\Http\Controllers\Controller;
+use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ArticleController extends Controller
+class PostController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index()
     {
-        $this->middleware('auth')->only(['new', 'edit', 'save']);
-    }
+        $posts = Post::all();
 
-    public function read($title)
-    {
-        $title = hash('md5', $title);
-        $post = Post::where('url_hash', $title)->firstOrFail();
-
-        $categories = Category::all();
-
-        return view('article.read', ['post' => $post, 'categories' => $categories]);
+        return view('admin.posts.index', ['posts' => $posts]);
     }
 
     public function new()
@@ -46,10 +34,10 @@ class ArticleController extends Controller
             $tagsDropDown[$tag->tag_id] = $tag->name;
         }
 
-        return view('article.edit', [
+        return view('admin.posts.edit', [
             'post'       => $post,
             'categories' => $categoriesDropDown,
-            'tags'       => $tagsDropDown
+            'tags'       => $tagsDropDown,
         ]);
     }
 
@@ -69,10 +57,10 @@ class ArticleController extends Controller
             $tagsDropDown[$tag->tag_id] = $tag->name;
         }
 
-        return view('article.edit', [
+        return view('admin.posts.edit', [
             'post'       => $post,
             'categories' => $categoriesDropDown,
-            'tags'       => $tagsDropDown
+            'tags'       => $tagsDropDown,
         ]);
     }
 
@@ -115,7 +103,7 @@ class ArticleController extends Controller
             return [
                 'process'     => 'success',
                 'post_id'     => $post->post_id,
-                'redirect_to' => route('article.edit', $post->post_id)
+                'redirect_to' => route('posts.edit', $post->post_id),
             ];
         } else {
             return ['process' => 'success'];
