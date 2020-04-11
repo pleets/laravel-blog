@@ -28,3 +28,6 @@ Route::get('/', 'BlogController@index')->name('home');
 Route::get('/category/{id}', 'BlogController@category')->name('category');
 Route::get('/posts/{title}', 'PostController@read')->name('posts');
 
+Route::get('/ads.txt', function () {
+    return file_get_contents(base_path('ads.txt'));
+});
