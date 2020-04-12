@@ -19,6 +19,12 @@
 
     @include('layouts.head._fbtags')
 
+    @php
+        $sdk_should_be_included = config('facebook.home.activated') || config('facebook.posts.activated');
+    @endphp
+
+    @includeWhen($sdk_should_be_included, 'layouts.head._fb_social_plugins')
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/faster.js') }}" defer></script>
