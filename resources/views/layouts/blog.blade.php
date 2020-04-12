@@ -18,7 +18,12 @@
     <meta name="description" content="@yield('meta_description', $description)">
 
     @include('layouts.head._fbtags')
-    @include('layouts.head._fb_social_plugins')
+
+    @php
+        $sdk_should_be_included = config('facebook.home.activated') || config('facebook.posts.activated');
+    @endphp
+
+    @includeWhen($sdk_should_be_included, 'layouts.head._fb_social_plugins')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
