@@ -16,6 +16,19 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
+                <!-- FB Social Plugin -->
+                @if(config('facebook.home.activated'))
+                    <div class="fb-like"
+                         data-href="{{ route('home') }}"
+                         data-width=""
+                         data-layout="{{ config('facebook.home.layout') }}"
+                         data-action="{{ config('facebook.home.action') }}"
+                         data-size="{{ config('facebook.home.size') }}"
+                         data-share="{{ config('facebook.home.share_button') }}"
+                         style="line-height: 2.4">
+                    </div>
+                @endif
+
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">

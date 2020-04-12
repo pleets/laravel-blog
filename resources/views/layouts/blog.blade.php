@@ -18,6 +18,7 @@
     <meta name="description" content="@yield('meta_description', $description)">
 
     @include('layouts.head._fbtags')
+    @include('layouts.head._fb_social_plugins')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

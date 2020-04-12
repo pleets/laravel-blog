@@ -24,6 +24,20 @@
                     </div>
                 @endif
                 <br />
+
+                <!-- FB Social Plugin -->
+                @if(config('facebook.posts.activated'))
+                    <div class="fb-like"
+                         data-href="{{ url()->current() }}"
+                         data-width=""
+                         data-layout="{{ config('facebook.posts.layout') }}"
+                         data-action="{{ config('facebook.posts.action') }}"
+                         data-size="{{ config('facebook.posts.size') }}"
+                         data-share="{{ config('facebook.posts.share_button') }}"
+                         style="float: left; margin-right: 10px;">
+                    </div>
+                @endif
+
                 {!! $post->content !!}
                 <footer class="pt-5">
                     <h4>Acerca de {{ $post->author->user->name }}</h4>
