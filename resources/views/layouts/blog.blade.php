@@ -36,6 +36,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/faster.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/facebook.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/monokai-sublime.css') }}" rel="stylesheet">
 </head>
