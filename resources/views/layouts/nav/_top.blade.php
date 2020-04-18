@@ -19,7 +19,7 @@
                 <!-- FB Social Plugin -->
                 @if(config('facebook.home.activated'))
                     <div class="fb-like"
-                         data-href="{{ route('home') }}"
+                         data-href="{{ config('facebook.fb_page_url', route('home')) }}"
                          data-width=""
                          data-layout="{{ config('facebook.home.layout') }}"
                          data-action="{{ config('facebook.home.action') }}"
