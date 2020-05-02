@@ -17,4 +17,12 @@ class Category extends Model
     {
         return $this->hasMany(Post::class, $this->primaryKey);
     }
+
+    /**
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

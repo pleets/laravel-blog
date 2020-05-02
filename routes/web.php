@@ -21,7 +21,7 @@ Route::namespace('Admin')
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'BlogController@index')->name('home');
-Route::get('/category/{id}', 'BlogController@category')->name('category');
+Route::get('/{category}', 'BlogController@category')->name('category');
 Route::get('/' . config('posts.posts_url') . '/{title}', 'PostController@read')->name('posts');
 
 Route::get('/ads.txt', function () {
