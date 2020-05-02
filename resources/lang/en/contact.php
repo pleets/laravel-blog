@@ -6,11 +6,14 @@ return [
     ],
     'title' => 'Contact form',
     'description' => 'Fill out the form below to contact us. We going to response you as soon as possible.',
-    'fields' => [
-        'firstName' => 'First Name',
-        'lastName' => 'Last Name',
-        'email' => 'Email',
-        'phone' => 'Phone',
-        'message' => 'Message',
+    'form' => [
+        'fields' => [
+            'firstName' => 'First Name',
+            'lastName' => 'Last Name',
+            'email' => 'Email',
+            'phone' => 'Phone',
+            'message' => 'Message',
+            'submit' => 'Submit',
+        ],
     ],
 ];

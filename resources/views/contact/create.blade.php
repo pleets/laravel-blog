@@ -11,26 +11,26 @@
             </p>
             <form action="">
                 <div class="form-group">
-                    <label for="firstName">{{ __('contact.fields.firstName') }}</label>
+                    <label for="firstName">{{ __('contact.form.fields.firstName') }}</label>
                     <input type="text" class="form-control" id="firstName" name="firstname" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label for="lastName">{{ __('contact.fields.lastName') }}</label>
+                    <label for="lastName">{{ __('contact.form.fields.lastName') }}</label>
                     <input type="text" class="form-control" id="lastName" name="lastname" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label for="email">{{ __('contact.fields.email') }}</label>
+                    <label for="email">{{ __('contact.form.fields.email') }}</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label for="phone">{{ __('contact.fields.phone') }}</label>
+                    <label for="phone">{{ __('contact.form.fields.phone') }}</label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label for="message">{{ __('contact.fields.message') }}</label>
+                    <label for="message">{{ __('contact.form.fields.message') }}</label>
                     <textarea rows="3" class="form-control" id="message" name="phone"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Send</button>
+                <button type="submit" class="btn btn-primary">{{ __('contact.form.fields.submit') }}</button>
             </form>
         </div>
     </div>
