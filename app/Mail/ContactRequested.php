@@ -29,7 +29,7 @@ class ContactRequested extends Mailable
      */
     public function build()
     {
-        $this->subject('Contact Requested')->with($this->data);
+        $this->subject(config('contact.mail.subject'))->with($this->data);
 
         return $this->markdown('contact._mail');
     }

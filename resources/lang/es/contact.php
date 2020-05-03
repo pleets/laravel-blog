@@ -19,6 +19,7 @@ return [
     'requested' => 'Gracias por enviarnos tu información. Nos comunicaremos contigo tan pronto como sea posible.',
     'back' => 'Volver a la página de inicio',
     'mail' => [
+        'subject' => 'Solicitud de Contacto',
         'hello' => 'Hola',
         'message' => 'Nueva información de contacto',
         'footer' => 'Gracias',
