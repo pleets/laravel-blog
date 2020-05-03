@@ -25,7 +25,7 @@ class ContactController extends Controller
      * Store a newly created resource in storage.
      *
      * @param ContactStoreRequest $request
-     * @return Factory|View
+     * @return mixed
      */
     public function store(ContactStoreRequest $request)
     {
@@ -38,21 +38,10 @@ class ContactController extends Controller
         }
 
         $data = $request->except('_token');
-        $this->sendMail($data);
+
+        (Mail::to(config('mail.to.address')))
+            ->send(new ContactRequested($data));
 
         return view('contact.store');
-    }
-
-    private function sendMail(array $data)
-    {
-        $mailable = new ContactRequested($data);
-
-        $mail = Mail::to(config('mail.to.address'));
-
-        /*if (config('mail.reply_to.address')) {
-            $mailable->cc(config('mail.reply_to.address'), config('mail.reply_to.name'));
-        }*/
-
-        $mail->send($mailable);
     }
 }
