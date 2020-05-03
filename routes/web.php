@@ -28,4 +28,5 @@ Route::get('/ads.txt', function () {
     return file_get_contents(base_path('ads.txt'));
 });
 
-Route::resource('/contact', 'ContactController')->only(['create', 'store']);
+Route::get('/contact', 'ContactController@create')->name('contact.create');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
