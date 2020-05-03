@@ -27,3 +27,6 @@ Route::get('/' . config('posts.posts_url') . '/{title}', 'PostController@read')-
 Route::get('/ads.txt', function () {
     return file_get_contents(base_path('ads.txt'));
 });
+
+Route::get('/contact', 'ContactController@create')->name('contact.create');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
