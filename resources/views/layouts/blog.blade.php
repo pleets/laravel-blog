@@ -21,9 +21,11 @@
 
     @php
         $sdk_should_be_included = config('facebook.home.activated') || config('facebook.posts.activated');
+        $recaptcha_api = config('google.recaptcha.activated');
     @endphp
 
     @includeWhen($sdk_should_be_included, 'layouts.head._fb_social_plugins')
+    @includeWhen($recaptcha_api, 'layouts.head._google_recaptcha')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

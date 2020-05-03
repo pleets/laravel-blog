@@ -68,6 +68,8 @@
                               class="form-control @error('message') is-invalid @enderror">{{ old('message') }}</textarea>
                     @error('message') <div class="text-danger">{{ __($message) }}</div> @enderror
                 </div>
+                @php $recaptcha = config('google.recaptcha.activated'); @endphp
+                @includeWhen($recaptcha, 'layouts.forms.recaptcha')
                 <button type="submit" class="btn btn-primary">{{ __('contact.form.fields.submit') }}</button>
             </form>
         </div>

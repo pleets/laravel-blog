@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactStoreRequest;
 use App\Mail\ContactRequested;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
@@ -28,6 +29,14 @@ class ContactController extends Controller
      */
     public function store(ContactStoreRequest $request)
     {
+        $recaptcha = $request->input('g-recaptcha-response', false);
+
+        if (!$recaptcha) {
+            return back()->withErrors([
+                'recaptcha' => trans('recaptcha.failed'),
+            ])->withInput();
+        }
+
         $data = $request->except('_token');
         $this->sendMail($data);
 
