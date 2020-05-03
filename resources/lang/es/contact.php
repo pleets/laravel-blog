@@ -16,4 +16,11 @@ return [
             'submit' => 'Enviar',
         ],
     ],
+    'requested' => 'Gracias por enviarnos tu información. Nos comunicaremos contigo tan pronto como sea posible.',
+    'back' => 'Volver a la página de inicio',
+    'mail' => [
+        'hello' => 'Hola',
+        'message' => 'Nueva información de contacto',
+        'footer' => 'Gracias',
+    ],
 ];

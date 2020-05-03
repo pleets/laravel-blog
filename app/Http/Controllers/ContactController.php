@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactStoreRequest;
+use App\Mail\ContactRequested;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class ContactController extends Controller
@@ -23,10 +24,26 @@ class ContactController extends Controller
      * Store a newly created resource in storage.
      *
      * @param ContactStoreRequest $request
-     * @return void
+     * @return Factory|View
      */
     public function store(ContactStoreRequest $request)
     {
-        //
+        $data = $request->except('_token');
+        $this->sendMail($data);
+
+        return view('contact.store');
+    }
+
+    private function sendMail(array $data)
+    {
+        $mailable = new ContactRequested($data);
+
+        $mail = Mail::to(config('mail.to.address'));
+
+        /*if (config('mail.reply_to.address')) {
+            $mailable->cc(config('mail.reply_to.address'), config('mail.reply_to.name'));
+        }*/
+
+        $mail->send($mailable);
     }
 }
