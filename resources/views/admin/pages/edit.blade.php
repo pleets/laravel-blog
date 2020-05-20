@@ -15,7 +15,7 @@
                 {{ Form::hidden('page_id', $page->page_id) }}
                 <div class="form-row">
                     <div class="form-group col-sm-6">
-                        {{ Form::label('title', 'Post title') }}
+                        {{ Form::label('title', 'Page title') }}
                         {{ Form::text('title', $page->title, [
                             'class' => 'form-control',
                             'placeholder' => 'page title',
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-sm-12">
-                        {{ Form::label('content', 'Post content') }}
+                        {{ Form::label('content', 'Page content') }}
                         {{ Form::textarea('content', $page->content, ['class' => 'form-control']) }}
                     </div>
                 </div>
