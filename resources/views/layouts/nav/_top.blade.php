@@ -14,6 +14,18 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('contact.create') }}">{{ __('contact.navigation.text') }}</a>
                 </li>
+
+                @php
+                    $pages = \App\Page::all();
+                @endphp
+
+                @if ($pages)
+                    @foreach($pages as $page)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pages', ['title' => $page->url_path ]) }}">{{ $page->title }}</a>
+                        </li>
+                    @endforeach
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -50,6 +62,10 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('admin.posts') }}">
                                 Posts
+                            </a>
+
+                            <a class="dropdown-item" href="{{ route('admin.pages') }}">
+                                Pages
                             </a>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
