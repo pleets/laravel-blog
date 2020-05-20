@@ -23,6 +23,7 @@ Route::namespace('Admin')
 Route::get('/', 'BlogController@index')->name('home');
 Route::get('/category/{id}', 'BlogController@category')->name('category');
 Route::get('/' . config('posts.posts_url') . '/{title}', 'PostController@read')->name('posts');
+Route::get('/' . config('pages.pages_url') . '/{title}', 'PageController@read')->name('pages');
 
 Route::get('/ads.txt', function () {
     return file_get_contents(base_path('ads.txt'));
