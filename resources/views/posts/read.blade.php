@@ -39,11 +39,31 @@
                 @endif
 
                 {!! $post->content !!}
+
+                <!-- PayPal checkout smart button -->
+                @if(config('paypal.activated'))
+                    <div class="row align-items-center">
+                        <div class="col-sm-auto text-center">
+                            <img src="{{ asset('img/cup-of-coffee.png') }}" width="190">
+                        </div>
+                        <div class="col col-sm-5 col-md-4 col-lg-3">
+                            <p class="text-center pltsword">
+                                {{ __('paypal.smart_button_invitation') }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div id="paypal-button-post"></div>
+                        </div>
+                    </div>
+                @endif
+
                 <footer class="pt-5">
                     <h4>Acerca de {{ $post->author->user->name }}</h4>
                     <div class="row">
-                        <div class="col-sm-auto">
-                            <img src="{{ asset('img/authors/fermius.jpg') }}" alt="Author" class="rounded-circle" width="70" class="d-flex">
+                        <div class="col-sm-auto text-center">
+                            <img src="{{ asset('img/authors/fermius.jpg') }}" alt="Author" class="rounded-circle" width="100">
                         </div>
                         <div class="col">
                             <p class="text-justify">
