@@ -14,6 +14,7 @@ class CategoriesTableSeeder extends Seeder
     {
         DB::table('categories')->insert([
             'name' => 'Programming',
+            'slug' => 'programming',
         ]);
     }
 }

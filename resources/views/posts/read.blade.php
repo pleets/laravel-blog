@@ -99,7 +99,7 @@
                 <ul style="list-style: none; padding: 0;">
                     @foreach ($categories as $category)
                         <li>
-                            <a href="{{ route('category', ['id' => $category->category_id]) }}">
+                            <a href="{{ route('category', $category) }}">
                                 {{ $category->name }}
                             </a>
                         </li>

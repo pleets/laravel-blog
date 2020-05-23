@@ -23,12 +23,11 @@ class BlogController extends Controller
     /**
      * Show all posts with a particular caterogy
      *
-     * @param mixed $id
+     * @param Category $category
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function category($id)
+    public function category(Category $category)
     {
-        $category = Category::findOrFail($id);
         $posts = Post::where('category_id', $category->category_id)->orderBy('published_at', 'desc')->get();
         $categories = Category::all();
 
