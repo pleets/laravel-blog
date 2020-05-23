@@ -21,13 +21,13 @@ Route::namespace('Admin')
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'BlogController@index')->name('home');
-Route::get('/{category}', 'BlogController@category')->name('category');
-Route::get('/' . config('posts.posts_url') . '/{title}', 'PostController@read')->name('posts');
-Route::get('/' . config('pages.pages_url') . '/{title}', 'PageController@read')->name('pages');
+Route::get('/' . config('routing.categories') .'/{category}', 'BlogController@category')->name('category');
+Route::get('/' . config('routing.posts') . '/{title}', 'PostController@read')->name('posts');
+Route::get('/' . config('routing.pages') . '/{title}', 'PageController@read')->name('pages');
 
 Route::get('/ads.txt', function () {
     return file_get_contents(base_path('ads.txt'));
 });
 
-Route::get('/contact', 'ContactController@create')->name('contact.create');
-Route::post('/contact', 'ContactController@store')->name('contact.store');
+Route::get(config('routing.contact'), 'ContactController@create')->name('contact.create');
+Route::post(config('routing.contact'), 'ContactController@store')->name('contact.store');
