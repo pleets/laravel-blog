@@ -44,5 +44,9 @@
             © {{ date('Y') }} <span class="pltsword">Pleets</span>
         </footer>
     </div>
+
+    @if(request()->routeIs('posts.edit') || request()->routeIs('pages.edit'))
+        <script src="{{ asset('js/editor.js') }}" defer></script>
+    @endif
 </body>
 </html>
