@@ -2,14 +2,14 @@
 
 @section('content')
 
-<div class="container">
-    {{ Form::open([
-            'id' => 'frm-article',
-            'url' => 'admin/posts/save',
-            'data-role' => 'ajax-request',
-            'data-callback' => 'v = { success: function(response) { if (response.post_id !== undefined) window.location = response.redirect_to; } }'
-        ])
-    }}
+    <div class="container">
+        {{ Form::open([
+                'id' => 'frm-article',
+                'url' => 'admin/posts/save',
+                'data-role' => 'ajax-request',
+                'data-callback' => 'v = { success: function(response) { if (response.post_id !== undefined) window.location = response.redirect_to; else { $("#post-content").html($("#content").val()); } } }'
+            ])
+        }}
         <div class="row">
             <div class="col-sm-9" style="border-right: dashed 1px #d6d6d6">
                 {{ Form::hidden('post_id', $post->post_id) }}
@@ -76,6 +76,7 @@
             </div>
         </div>
         {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
-    {{ Form::close() }}
-</div>
+        {{ Form::close() }}
+        <div id="post-content" class="mt-5">{!! $post->content !!}</div>
+    </div>
 @endsection

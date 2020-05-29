@@ -38,10 +38,3 @@ window.hljs = hljs;
 
 require('trumbowyg');
 
-$(document).ready(function(){
-    $('#content').trumbowyg({
-        //btns: ['strong', 'em', '|', 'link'],
-        autogrow: true,
-        svgPath: '/svg/trumbowyg-icons.svg'
-    });
-});
