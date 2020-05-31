@@ -31,16 +31,16 @@ return [
         'activated' => env('FB_SOCIAL_PLUGINS_HOME_ACTIVATED', true),
 
         // standard | box_count | button_count | button
-        'layout' => env('FB_SOCIAL_PLUGINS_LAYOUT_HOME', 'standard'),
+        'layout' => env('FB_SOCIAL_PLUGINS_HOME_LAYOUT', 'standard'),
 
         // like | recommend
-        'action' => env('FB_SOCIAL_PLUGINS_ACTION_HOME', 'like'),
+        'action' => env('FB_SOCIAL_PLUGINS_HOME_ACTION', 'like'),
 
         // small | large
-        'size' => env('FB_SOCIAL_PLUGINS_SIZE_HOME', 'small'),
+        'size' => env('FB_SOCIAL_PLUGINS_HOME_SIZE', 'small'),
 
         // true | false
-        'share_button' => env('FB_SOCIAL_PLUGINS_SHARE_BUTTON_HOME', 'true'),
+        'share_button' => env('FB_SOCIAL_PLUGINS_HOME_SHARE_BUTTON', 'true'),
     ],
 
     'posts' => [
