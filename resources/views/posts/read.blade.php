@@ -26,19 +26,35 @@
                 <br />
 
                 <!-- FB Social Plugin -->
-                @if(config('facebook.posts.activated'))
+                @if(config('facebook.posts.starting.activated'))
                     <div class="fb-like"
                          data-href="{{ url()->current() }}"
                          data-width=""
-                         data-layout="{{ config('facebook.posts.layout') }}"
-                         data-action="{{ config('facebook.posts.action') }}"
-                         data-size="{{ config('facebook.posts.size') }}"
-                         data-share="{{ config('facebook.posts.share_button') }}"
+                         data-layout="{{ config('facebook.posts.starting.layout') }}"
+                         data-action="{{ config('facebook.posts.starting.action') }}"
+                         data-size="{{ config('facebook.posts.starting.size') }}"
+                         data-share="{{ config('facebook.posts.starting.share_button') }}"
                          style="float: left; margin-right: 10px;">
                     </div>
                 @endif
 
                 {!! $post->content !!}
+
+                <div style="overflow: hidden;">
+                    <!-- FB Social Plugin -->
+                    @if(config('facebook.posts.ending.activated'))
+                        <div class="fb-like"
+                             data-href="{{ url()->current() }}"
+                             data-width=""
+                             data-layout="{{ config('facebook.posts.ending.layout') }}"
+                             data-action="{{ config('facebook.posts.ending.action') }}"
+                             data-size="{{ config('facebook.posts.ending.size') }}"
+                             data-share="{{ config('facebook.posts.ending.share_button') }}"
+                             style="float: left; margin-right: 10px;">
+                        </div>
+                    @endif
+                </div>
+
                 <hr />
 
                 <!-- PayPal checkout smart button -->
