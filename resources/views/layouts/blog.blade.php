@@ -43,7 +43,10 @@
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/facebook.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/monokai-sublime.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/monokai-sublime.css') }}" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="{{ asset('css/monokai-sublime.css') }}" rel="stylesheet">
+    </noscript>
 </head>
 <body>
     <div id="app">
@@ -59,7 +62,7 @@
     </div>
 
     <!-- PayPal checkout smart button -->
-    @if(config('paypal.activated'))
+    @if(config('paypal.activated') && request()->routeIs('posts'))
         <script src="{{ asset('js/paypal.js') }}" defer></script>
     @endif
 </body>
