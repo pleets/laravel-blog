@@ -39,21 +39,24 @@
                 @endif
 
                 {!! $post->content !!}
+                <hr />
 
                 <!-- PayPal checkout smart button -->
                 @if(config('paypal.activated'))
-                    <div class="row align-items-center">
-                        <div class="col-sm-auto text-center">
-                            <img src="{{ asset('img/cup-of-coffee.png') }}" width="190">
-                        </div>
-                        <div class="col col-sm-5 col-md-4 col-lg-3">
-                            <p class="text-center pltsword">
+                    <div class="row">
+                        <div class="col-sm-10 col-md-8">
+                            <p class="text-center pltsword" style="font-size: 25px;">
                                 {{ __('paypal.smart_button_invitation') }}
                             </p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3">
+                        <div class="col-sm-10 col-md-8 text-center">
+                            <img src="{{ asset('img/cup-of-coffee.png') }}" width="190">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-10 col-md-8">
                             <div id="paypal-button-post"></div>
                         </div>
                     </div>
