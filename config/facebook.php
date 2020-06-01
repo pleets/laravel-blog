@@ -76,5 +76,9 @@ return [
             // true | false
             'share_button' => env('FB_SOCIAL_PLUGINS_POSTS_ENDING_SHARE_BUTTON', 'false'),
         ],
+        'comments' => [
+            // true | false
+            'activated' => env('FB_SOCIAL_PLUGINS_POSTS_COMMENTS_ACTIVATED', true),
+        ],
     ],
 ];

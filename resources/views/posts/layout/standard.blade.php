@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
     <div class="row">
         <div class="col-sm-9">
             <article>
@@ -95,7 +95,7 @@
             </article>
 
             <!-- FB Social Plugin -->
-            @if(config('facebook.posts.activated'))
+            @if(config('facebook.posts.comments.activated'))
                 <div class="fb-comments"
                      data-href="{{ url()->current() }}"
                      data-numposts="5"
