@@ -109,6 +109,16 @@
                         </div>
                     </div>
                 </footer>
+
+                <!-- FB Social Plugin -->
+                @if(config('facebook.posts.comments.activated'))
+                    <div class="fb-comments"
+                         data-href="{{ url()->current() }}"
+                         data-numposts="5"
+                         data-width="100%">
+                    </div>
+                @endif
+
             </div>
             <div class="col-sm-3">
                 <div class="widget">
