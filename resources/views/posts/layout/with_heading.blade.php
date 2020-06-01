@@ -3,7 +3,7 @@
         <div class="container container-fluid">
             <h1 style="font-family: 'Fjalla One', sans-serif;" class="text-white">{{ $post->title }}</h1>
             <div class="row">
-                <div class="col-sm-auto text-center">
+                <div class="col-xs-auto text-center">
                     <img src="{{ asset('img/authors/fermius.jpg') }}" alt="Author" class="rounded-circle" width="80" style="border: solid 2px #037466;">
                 </div>
                 <div class="col">
