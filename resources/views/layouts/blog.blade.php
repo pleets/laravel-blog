@@ -52,7 +52,7 @@
     <div id="app">
         @include('layouts.nav._top')
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
 
