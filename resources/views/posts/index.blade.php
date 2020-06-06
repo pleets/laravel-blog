@@ -6,7 +6,7 @@
 @endisset
 
 @section('content')
-<div class="container">
+<div class="container mt-3">
     <div class="row">
         <div class="col-sm-9">
             @if ($posts->count())
@@ -17,28 +17,39 @@
                 @endisset()
                 @foreach ($posts as $post)
                     <article>
-                        <h2 style="font-family: Nunito">
-                            <a href="{{ route('posts', ['title' => str_replace(' ', '-', $post->url_path)]) }}">
-                                {{ $post->title }}
-                            </a>
-                        </h2>
-                        <div>
-                            <span class="badge badge-success">{{ $post->published_at }}</span>
-                            <span class="badge badge-primary">{{ $post->category->name }}</span>
-                            @if ($post->tags->count())
-                                @foreach ($post->tags as $tag)
-                                    <span class="badge badge-light">{{ $tag->name }}</span>
-                                @endforeach
-                            @endif
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <img src="{{ asset($post->image) }}" alt="post image" style="width: 100%;">
+                                <br />
+                                <br />
+                            </div>
+                            <div class="col-sm-10">
+                                <h2 style="font-family: Nunito">
+                                    <a href="{{ route('posts', ['title' => str_replace(' ', '-', $post->url_path)]) }}">
+                                        {{ $post->title }}
+                                    </a>
+                                </h2>
+                                <div>
+                                    <span class="badge badge-success">{{ $post->published_at }}</span>
+                                    <span class="badge badge-primary">{{ $post->category->name }}</span>
+                                    @if ($post->tags->count())
+                                        @foreach ($post->tags as $tag)
+                                            <span class="badge badge-light">{{ $tag->name }}</span>
+                                        @endforeach
+                                    @endif
+                                </div>
+                                <p class="text-justify">
+                                    {!! substr(strip_tags($post->content), 0, 256) . '...' !!}
+                                </p>
+                                <footer class="pt-2">
+                                    by {{ $post->author->user->name }}
+                                </footer>
+                            </div>
                         </div>
-                        <p class="text-justify">
-                            {!! substr(strip_tags($post->content), 0, 256) . '...' !!}
-                        </p>
-                        <footer class="pt-2">
-                            by {{ $post->author->user->name }}
-                        </footer>
                     </article><br /><br />
                 @endforeach
+
+                {{ $posts->links() }}
             @else
                 @if(isset($showing))
                     <div class="alert alert-info">
