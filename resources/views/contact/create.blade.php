@@ -3,7 +3,7 @@
 @section('meta_title', 'Contact Us')
 
 @section('content')
-    <div class="container" style="max-width: 550px;">
+    <div class="container mt-3" style="max-width: 550px;">
         <div class="container">
             <h3>{{ __('contact.title') }}</h3>
             <p class="text-justify">

@@ -14,7 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('published_at', 'desc')->get();
+        $posts = Post::orderBy('published_at', 'desc')->paginate();
         $categories = Category::all();
 
         return view('posts.index', ['posts' => $posts, 'categories' => $categories]);
@@ -28,7 +28,8 @@ class BlogController extends Controller
      */
     public function category(Category $category)
     {
-        $posts = Post::where('category_id', $category->category_id)->orderBy('published_at', 'desc')->get();
+        $posts = Post::where('category_id', $category->category_id)
+            ->orderBy('published_at', 'desc')->paginate();
         $categories = Category::all();
 
         return view('posts.index', [
