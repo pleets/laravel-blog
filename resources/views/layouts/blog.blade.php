@@ -42,6 +42,7 @@
     <link href="{{ asset('css/faster.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/facebook.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/monokai-sublime.css') }}" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
