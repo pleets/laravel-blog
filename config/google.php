@@ -16,4 +16,16 @@ return [
             'size' => env('', 'normal'),
         ],
     ],
+    'analytics' => [
+        // true | false
+        'activated' => env('GOOGLE_ANALYTICS_ACTIVATED', false),
+
+        'id' => env('GOOGLE_ANALYTICS_ID'),
+    ],
+    'ads' => [
+        // true | false
+        'activated' => env('GOOGLE_ADS_ACTIVATED', false),
+
+        'client' => env('GOOGLE_ADS_CLIENT'),
+    ],
 ];
