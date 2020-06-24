@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -19,11 +20,21 @@ class SocialAuthController extends Controller
     }
 
     /**
+     * @param Request $request
      * @param $provider
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function handleProviderCallback($provider)
+    public function handleProviderCallback(Request $request, $provider)
     {
+        if ($request->has('error')) {
+            redirect()->route('login')
+                ->withErrors([
+                    'socialite' => $request->get('error') .
+                        $request->get('error_description', 'unknown') .
+                        $request->get('error_reason', 'No reason'),
+                ]);
+        }
+
         $socialUser = Socialite::driver($provider)->user();
 
         if ($user = User::where('email', $socialUser->email)->first()) {

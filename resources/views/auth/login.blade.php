@@ -8,6 +8,9 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    @error('socialite')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
