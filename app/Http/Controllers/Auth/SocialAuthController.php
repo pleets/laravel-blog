@@ -27,10 +27,10 @@ class SocialAuthController extends Controller
     public function handleProviderCallback(Request $request, $provider)
     {
         if ($request->has('error')) {
-            redirect()->route('login')
+            return redirect()->route('login')
                 ->withErrors([
-                    'socialite' => $request->get('error') .
-                        $request->get('error_description', 'unknown') .
+                    'socialite' =>
+                        $request->get('error_description', 'unknown') .': '.
                         $request->get('error_reason', 'No reason'),
                 ]);
         }
