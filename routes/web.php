@@ -13,6 +13,10 @@
 
 Auth::routes(['register' => false]);
 
+/* Socialite */
+Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
+Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
+
 /* Admin routes */
 Route::namespace('Admin')
     ->prefix('admin')
