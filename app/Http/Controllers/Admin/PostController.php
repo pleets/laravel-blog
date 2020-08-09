@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Constants\Resource;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Tag;
@@ -13,6 +14,8 @@ class PostController extends Controller
 {
     public function index()
     {
+        $this->authorize(Resource::POST_INDEX);
+
         $posts = Post::all();
 
         return view('admin.posts.index', ['posts' => $posts]);
