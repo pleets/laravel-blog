@@ -5,7 +5,7 @@
     <div class="container">
         {{ Form::open([
                 'id' => 'frm-article',
-                'url' => 'admin/posts/save',
+                'url' => route('admin.posts.store'),
                 'data-role' => 'ajax-request',
                 'data-callback' => 'v = { success: function(response) { if (response.post_id !== undefined) window.location = response.redirect_to; else { $("#post-content").html($("#content").val()); } } }'
             ])
@@ -15,20 +15,20 @@
                 {{ Form::hidden('post_id', $post->post_id) }}
                     <div class="form-row">
                         <div class="form-group col-sm-6">
-                            {{ Form::label('title', 'Post title') }}
+                            {{ Form::label('title', __('posts.fields.title')) }}
                             {{ Form::text('title', $post->title, [
                                 'class' => 'form-control',
-                                'placeholder' => 'post title',
+                                'placeholder' => strtolower(__('posts.fields.title')),
                                 ]) }}
                         </div>
                         <div class="form-group col-sm-6">
-                            {{ Form::label('category', 'Category') }}
+                            {{ Form::label('category', __('posts.fields.category')) }}
                             {{ Form::select('category', $categories, $post->category_id, ['class' => 'form-control']) }}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-sm-6">
-                            {{ Form::label('tags', 'Tags') }}
+                            {{ Form::label('tags', __('posts.fields.tags')) }}
                             {{ Form::select('tags[]', $tags, $post->tags->pluck('tag_id'), [
                                 'class' => 'custom-select',
                                 'multiple' => 'multiple',
@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-sm-12">
-                            {{ Form::label('content', 'Post content') }}
+                            {{ Form::label('content', __('posts.fields.content')) }}
                             {{ Form::textarea('content', $post->content, ['class' => 'form-control']) }}
                         </div>
                     </div>
@@ -46,30 +46,28 @@
             <div class="col-sm-3">
                 <div class="form-row">
                     <div class="form-group col-sm-12">
-                        {{ Form::label('published_at', 'Published') }}
+                        {{ Form::label('published_at', __('posts.fields.published_at')) }}
                         {{ Form::date('published_at', $post->published_at ?? date('Y-m-d'), [
                             'class' => 'form-control'
                             ]) }}
                     </div>
                     <div class="form-group col-sm-12">
-                        {{ Form::label('url', 'Url') }}
+                        {{ Form::label('url', __('posts.fields.url')) }}
                         {{ Form::text('url', $post->url_path, [
                             'class' => 'form-control',
-                            'placeholder' => 'post title',
                             ]) }}
                     </div>
                     <div class="form-group col-sm-12">
-                        {{ Form::label('description', 'description') }}
+                        {{ Form::label('description', __('posts.fields.description')) }}
                         {{ Form::text('description', $post->description, [
                             'class' => 'form-control',
-                            'placeholder' => 'post description',
+                            'placeholder' => strtolower(__('posts.fields.description')),
                             ]) }}
                     </div>
                     <div class="form-group col-sm-12">
-                        {{ Form::label('image', 'image') }}
+                        {{ Form::label('image', __('posts.fields.image')) }}
                         {{ Form::text('image', $post->image, [
                             'class' => 'form-control',
-                            'placeholder' => 'post image',
                             ]) }}
                     </div>
                 </div>

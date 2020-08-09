@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             TagsTableSeeder::class,
             CategoriesTableSeeder::class,
-            AuthorsTableSeeder::class,
+            WriterSeeder::class,
         ]);
     }
 }
