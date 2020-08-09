@@ -33,6 +33,9 @@ class RoleHasPermissionSeeder extends Seeder
     private function createWriterRolePermissions()
     {
         $role = Role::findByName('Writer');
-        $role->syncPermissions(Permission::where('name', Resource::POST_INDEX)->first());
+        $role->syncPermissions(Permission::whereIn('name', [
+            Resource::POST_INDEX,
+            Resource::POST_CREATE,
+        ])->get());
     }
 }

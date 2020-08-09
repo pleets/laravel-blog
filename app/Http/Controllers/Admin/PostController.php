@@ -21,8 +21,10 @@ class PostController extends Controller
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
-    public function new()
+    public function create()
     {
+        $this->authorize(Resource::POST_CREATE);
+
         $post = new Post();
         $categories = Category::all();
         $tags       = Tag::all();
@@ -46,6 +48,8 @@ class PostController extends Controller
 
     public function edit($id)
     {
+        $this->authorize(Resource::POST_UPDATE);
+
         $post       = Post::findOrFail($id);
         $categories = Category::all();
         $tags       = Tag::all();
@@ -67,8 +71,10 @@ class PostController extends Controller
         ]);
     }
 
-    public function save(Request $request)
+    public function store(Request $request)
     {
+        $this->authorize(Resource::POST_CREATE);
+
         if (is_null($request->input('post_id'))) {
             $post = new Post();
             // TODO: Handle when author does not exists
@@ -106,7 +112,7 @@ class PostController extends Controller
             return [
                 'process'     => 'success',
                 'post_id'     => $post->post_id,
-                'redirect_to' => route('posts.edit', $post->post_id),
+                'redirect_to' => route('admin.posts.edit', $post->post_id),
             ];
         } else {
             return ['process' => 'success'];

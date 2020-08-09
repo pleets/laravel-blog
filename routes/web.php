@@ -16,6 +16,7 @@ Auth::routes(['register' => false]);
 /* Admin routes */
 Route::namespace('Admin')
     ->prefix('admin')
+    ->as('admin.')
     ->middleware('auth')
     ->group(base_path('routes/admin/web.php'));
 

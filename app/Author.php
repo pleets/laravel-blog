@@ -13,6 +13,12 @@ class Author extends Model
      */
     protected $primaryKey = 'author_id';
 
+    protected $fillable = [
+        'user_id',
+        'about',
+        'citation',
+    ];
+
     public function posts()
     {
         return $this->hasMany(Post::class, $this->primaryKey);
