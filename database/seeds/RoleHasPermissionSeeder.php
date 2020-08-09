@@ -36,6 +36,7 @@ class RoleHasPermissionSeeder extends Seeder
         $role->syncPermissions(Permission::whereIn('name', [
             Resource::POST_INDEX,
             Resource::POST_CREATE,
+            Resource::POST_UPDATE,
         ])->get());
     }
 }
