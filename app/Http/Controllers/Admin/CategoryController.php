@@ -43,8 +43,6 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request): RedirectResponse
     {
-        $this->authorize(Resource::CATEGORY_CREATE);
-
         $data = $request->toArray();
 
         return redirect()->route('admin.categories.index', Category::create($data))
