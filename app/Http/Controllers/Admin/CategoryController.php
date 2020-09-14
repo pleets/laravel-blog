@@ -96,7 +96,7 @@ class CategoryController extends Controller
         $this->authorize(Resource::CATEGORY_DELETE);
 
         if (Post::where('category_id', $category->category_id)->count()) {
-            return redirect()->back()->withErrors(__('categories.messages.existing_posts'));
+            return redirect()->back()->withErrors(['posts_related_error' => __('categories.messages.existing_posts')]);
         }
 
         $category->delete();
