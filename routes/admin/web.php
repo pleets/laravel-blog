@@ -1,5 +1,7 @@
 <?php
 
+Route::resource('/categories', 'CategoryController');
+
 Route::resource('/posts', 'PostController');
 
 // Pages

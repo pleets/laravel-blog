@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PermissionSeeder::class,
             RoleHasPermissionSeeder::class,
-            AdminUserSeeder::class,
-            TagsTableSeeder::class,
-            CategoriesTableSeeder::class,
-            WriterSeeder::class,
+            //AdminUserSeeder::class,
+            //TagsTableSeeder::class,
+            //CategoriesTableSeeder::class,
+            //WriterSeeder::class
         ]);
     }
 }

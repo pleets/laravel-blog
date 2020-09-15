@@ -19,6 +19,8 @@ class CreateAuthorsTable extends Migration
             $table->text('about');
             $table->text('citation');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('user_id')->on('users');
         });
     }
 
