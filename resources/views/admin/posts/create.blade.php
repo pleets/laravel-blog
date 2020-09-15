@@ -5,7 +5,7 @@
     <div class="container">
         {{ Form::open([
                 'id' => 'frm-article',
-                'url' => route('admin.posts.update'),
+                'url' => route('admin.posts.store', $post),
                 'data-role' => 'ajax-request',
                 'data-callback' => 'v = { success: function(response) { if (response.post_id !== undefined) window.location = response.redirect_to; else { $("#post-content").html($("#content").val()); } } }'
             ])
