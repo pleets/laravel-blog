@@ -28,7 +28,7 @@ class PostController extends Controller
 
         $post = new Post();
 
-        return view('admin.posts.edit', [
+        return view('admin.posts.create', [
             'post'       => $post,
             'categories' => CollectionParser::toKeyPair(Category::all(), 'category_id', 'name'),
             'tags'       => CollectionParser::toKeyPair(Tag::all(), 'tag_id', 'name'),
