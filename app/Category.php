@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int category_id
+ */
 class Category extends Model
 {
     /**
@@ -12,6 +15,11 @@ class Category extends Model
      * @var string
      */
     protected $primaryKey = 'category_id';
+
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
 
     public function posts()
     {
