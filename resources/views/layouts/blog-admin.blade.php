@@ -45,7 +45,7 @@
         </footer>
     </div>
 
-    @if(request()->routeIs('posts.edit') || request()->routeIs('pages.edit'))
+    @if(request()->routeIs('admin.posts.edit') || request()->routeIs('admin.pages.edit'))
         <script src="{{ asset('js/editor.js') }}" defer></script>
     @endif
 </body>
