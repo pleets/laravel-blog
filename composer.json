@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/vapor-cli": "^1.9",
         "laravel/vapor-core": "^2.9",
+        "laravel/vapor-ui": "^0.0.8",
         "laravelcollective/html": "^6.2",
         "myclabs/php-enum": "^1.7",
         "spatie/laravel-permission": "^3.13"
@@ -77,6 +78,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vapor-ui:publish --ansi"
         ]
     }
 }
