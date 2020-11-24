@@ -77,13 +77,13 @@ php artisan migrate --seed
 ```
 ## 1.3.1 Creating admin user
 
-For create the admin role and user with all related permissions you could run the following seeder
+To create the admin user and its role with all related permissions you could run the following seeder
 
 ```bash
 php artisan db:seed --class=AdminUserSeeder
 ```
 
-Then you could use the following user to log in
+Then you can use the following user credentials to log in
 
 ```text
 email: admin@admin.com
@@ -92,7 +92,8 @@ pass:  password
 
 ## 1.3.2 Creating sample data
 
-For non-production environments maybe you would like to get some sample data prepared for you. Let's execute the following seeders.
+For non-production environments maybe you would like to get some sample data prepared for you. To do that,
+Let's execute the following seeders.
 
 Example tags:
 
@@ -112,17 +113,9 @@ Writer user:
 php artisan db:seed --class=WriterSeeder
 ```
 
-## Sample Data
-
-Install some sample data executing the following seeder.
-
-```bash
-php artisan db:seed --class=SampleData
-```
-
-You could use the following user to log in
+Once you have executed the `WriterSeeder` you can log in with the following credentials
 
 ```text
-email: admin@admin.com
+email: writer@writer.com
 pass:  password
 ```
