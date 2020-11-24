@@ -1,0 +1,21 @@
+language: php
+
+php:
+  - 7.4
+
+services:
+  - mysql
+
+cache:
+  directories:
+    - node_modules
+    - vendor
+
+before_script:
+  - cp .env.pipelines .env
+  - sudo mysql -e 'CREATE DATABASE `test`;'
+  - composer install --no-interaction
+
+script:
+  - composer phpcs-auto-check-project
+  - composer phpunit
