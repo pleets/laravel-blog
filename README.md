@@ -2,6 +2,8 @@
 
 This is a simple microblogging app.
 
+![DASHBOARD](https://blog.pleets.org/img/articles/blog-dashboard-example.png)
+
 You can download this project as follows.
 
 ```bash
