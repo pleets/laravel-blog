@@ -17,8 +17,6 @@
     </filter>
     <php>
         <server name="APP_ENV" value="testing"/>
-        <server name="DB_USERNAME" value="test_user"/>
-        <server name="DB_PASSWORD" value="test_pass"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
         <server name="MAIL_DRIVER" value="array"/>

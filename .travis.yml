@@ -12,7 +12,7 @@ cache:
     - vendor
 
 before_script:
-  - cp .env.pipelines .env
+  - cp .env.travis .env
   - sudo mysql -e 'CREATE DATABASE `test`;'
   - composer install --no-interaction
 
