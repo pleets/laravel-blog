@@ -13,4 +13,4 @@ paypal.Buttons({
             alert('Thanks ' + details.payer.name.given_name);
         });
     }
-}).render('#paypal-button-post');
+}).render('#paypal-checkout-button');

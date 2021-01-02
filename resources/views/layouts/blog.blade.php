@@ -23,19 +23,21 @@
     @php
         $sdk_should_be_included = config('facebook.home.activated') || config('facebook.posts.activated');
         $recaptcha_api = config('google.recaptcha.activated');
-        $paypal_sdk = config('paypal.activated');
         $google_analytics = config('google.analytics.activated');
         $google_ads = config('google.ads.activated');
     @endphp
 
     @includeWhen($sdk_should_be_included, 'layouts.head._fb_social_plugins')
     @includeWhen($recaptcha_api, 'layouts.head._google_recaptcha')
-    @includeWhen($paypal_sdk, 'layouts.head._paypal_checkout')
 
     @guest
         @includeWhen($google_analytics, 'layouts.head._google_analytics')
         @includeWhen($google_ads, 'layouts.head._google_ads')
     @endguest
+
+    @if(request()->routeIs('posts'))
+        @include('laravel-paypal::checkout.sdk')
+    @endif
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -70,8 +72,8 @@
     </div>
 
     <!-- PayPal checkout smart button -->
-    @if(config('paypal.activated') && request()->routeIs('posts'))
-        <script src="{{ asset('js/paypal.js') }}" defer></script>
+    @if(\Pleets\LaravelPayPal\Helpers\Environment::isCheckoutActivated() && request()->routeIs('posts'))
+        <script src="{{ asset('js/paypal/checkout.js') }}" defer></script>
     @endif
 </body>
 </html>
