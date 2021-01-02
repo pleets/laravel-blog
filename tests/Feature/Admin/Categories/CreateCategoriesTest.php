@@ -5,7 +5,7 @@ namespace Tests\Feature\Admin\Categories;
 use App\Constants\Resource;
 use App\Facades\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\TestResponse;
+use Illuminate\Testing\TestResponse;
 use Tests\Feature\Concerns\HasAuthentication;
 use Tests\Feature\Concerns\HasAuthorization;
 use Tests\TestCase;
