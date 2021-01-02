@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d11d73db40494b9b348fa36cb3e2684e",
+    "content-hash": "e17d63f19a66ca621277f57a9d30dd3b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -395,6 +395,103 @@
             "time": "2020-10-13T00:52:37+00:00"
         },
         {
+            "name": "easy-http/guzzle-layer",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/easy-http/guzzle-layer.git",
+                "reference": "5d40f1247ff8cb8be1579a272993cfa4fe677067"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/easy-http/guzzle-layer/zipball/5d40f1247ff8cb8be1579a272993cfa4fe677067",
+                "reference": "5d40f1247ff8cb8be1579a272993cfa4fe677067",
+                "shasum": ""
+            },
+            "require": {
+                "easy-http/layer-contracts": "^0.1.0",
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.0",
+                "php": "7.4.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.2",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EasyHttp\\GuzzleLayer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darío Rivera",
+                    "email": "fermius.us@gmail.com"
+                }
+            ],
+            "description": "Http layer for Guzzle Client",
+            "homepage": "https://pleets.org",
+            "keywords": [
+                "http client",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/easy-http/guzzle-layer/issues",
+                "source": "https://github.com/easy-http/guzzle-layer"
+            },
+            "time": "2020-12-07T18:04:55+00:00"
+        },
+        {
+            "name": "easy-http/layer-contracts",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/easy-http/layer-contracts.git",
+                "reference": "da22cefe8f5d0a4bbe4feb9b87c1d74ac2b4637e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/easy-http/layer-contracts/zipball/da22cefe8f5d0a4bbe4feb9b87c1d74ac2b4637e",
+                "reference": "da22cefe8f5d0a4bbe4feb9b87c1d74ac2b4637e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.4",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EasyHttp\\LayerContracts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darío Rivera",
+                    "email": "fermius.us@gmail.com"
+                }
+            ],
+            "description": "Http layer contracts for PHP clients",
+            "support": {
+                "issues": "https://github.com/easy-http/layer-contracts/issues",
+                "source": "https://github.com/easy-http/layer-contracts/tree/v0.1.0"
+            },
+            "time": "2020-12-07T02:03:42+00:00"
+        },
+        {
             "name": "egulias/email-validator",
             "version": "2.1.25",
             "source": {
@@ -599,37 +696,43 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.5",
+            "version": "7.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e"
+                "reference": "0aa74dfb41ae110835923ef10a9d803a22d50e79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
-                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0aa74dfb41ae110835923ef10a9d803a22d50e79",
+                "reference": "0aa74dfb41ae110835923ef10a9d803a22d50e79",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.6.1",
-                "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "^1.17.0"
+                "guzzlehttp/promises": "^1.4",
+                "guzzlehttp/psr7": "^1.7",
+                "php": "^7.2.5 || ^8.0",
+                "psr/http-client": "^1.0"
+            },
+            "provide": {
+                "psr/http-client-implementation": "1.0"
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
+                "php-http/client-integration-tests": "^3.0",
+                "phpunit/phpunit": "^8.5.5 || ^9.3.5",
                 "psr/log": "^1.1"
             },
             "suggest": {
+                "ext-curl": "Required for CURL handler support",
+                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.5-dev"
+                    "dev-master": "7.1-dev"
                 }
             },
             "autoload": {
@@ -649,6 +752,11 @@
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://sagikazarmark.hu"
                 }
             ],
             "description": "Guzzle is a PHP HTTP client library",
@@ -659,14 +767,34 @@
                 "framework",
                 "http",
                 "http client",
+                "psr-18",
+                "psr-7",
                 "rest",
                 "web service"
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/6.5"
+                "source": "https://github.com/guzzle/guzzle/tree/7.2.0"
             },
-            "time": "2020-06-16T21:01:06+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/alexeyshockov",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/gmponos",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-10-10T11:47:56+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1833,6 +1961,50 @@
             "time": "2020-11-07T02:01:34+00:00"
         },
         {
+            "name": "payment-gateways/paypal-sdk",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/payment-gateways/paypal-sdk.git",
+                "reference": "cd0ee1ab9aa8e5d81aab8134a7bbef7a83d5e6c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/payment-gateways/paypal-sdk/zipball/cd0ee1ab9aa8e5d81aab8134a7bbef7a83d5e6c3",
+                "reference": "cd0ee1ab9aa8e5d81aab8134a7bbef7a83d5e6c3",
+                "shasum": ""
+            },
+            "require": {
+                "easy-http/guzzle-layer": "^0.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PaymentGateway\\PayPalSdk\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darío Rivera",
+                    "email": "fermius.us@gmail.com"
+                }
+            ],
+            "description": "PayPal SDK",
+            "support": {
+                "issues": "https://github.com/payment-gateways/paypal-sdk/issues",
+                "source": "https://github.com/payment-gateways/paypal-sdk/tree/v1.0.4"
+            },
+            "time": "2020-12-31T00:50:32+00:00"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.7.5",
             "source": {
@@ -1900,6 +2072,54 @@
                 }
             ],
             "time": "2020-07-20T17:29:33+00:00"
+        },
+        {
+            "name": "pleets/laravel-paypal",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pleets/laravel-paypal.git",
+                "reference": "1ca579dfbfa0d7747f76af41afa67407f544f412"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pleets/laravel-paypal/zipball/1ca579dfbfa0d7747f76af41afa67407f544f412",
+                "reference": "1ca579dfbfa0d7747f76af41afa67407f544f412",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^7.0 || ^8.0",
+                "payment-gateways/paypal-sdk": "^1.0",
+                "php": "7.4.*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.7",
+                "phpunit/phpunit": "^9.4",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pleets\\LaravelPayPal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darío Rivera",
+                    "email": "fermius.us@gmail.com"
+                }
+            ],
+            "description": "Paypal Integrations",
+            "support": {
+                "issues": "https://github.com/pleets/laravel-paypal/issues",
+                "source": "https://github.com/pleets/laravel-paypal/tree/v0.2.0"
+            },
+            "time": "2021-01-02T14:18:11+00:00"
         },
         {
             "name": "psr/container",
@@ -2003,6 +2223,58 @@
                 "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
             },
             "time": "2019-01-08T18:20:26+00:00"
+        },
+        {
+            "name": "psr/http-client",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-client.git",
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0",
+                "psr/http-message": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP clients",
+            "homepage": "https://github.com/php-fig/http-client",
+            "keywords": [
+                "http",
+                "http-client",
+                "psr",
+                "psr-18"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-client/tree/master"
+            },
+            "time": "2020-06-29T06:28:15+00:00"
         },
         {
             "name": "psr/http-message",

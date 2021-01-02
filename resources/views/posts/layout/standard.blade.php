@@ -49,8 +49,7 @@
 
                 <hr />
 
-                <!-- PayPal checkout smart button -->
-                @if(config('paypal.activated'))
+                @if(\Pleets\LaravelPayPal\Helpers\Environment::isCheckoutActivated())
                     <div class="row">
                         <div class="col-sm-10 col-md-8">
                             <p class="text-center pltsword" style="font-size: 25px;">
@@ -60,12 +59,8 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-10 col-md-8 text-center">
-                            <img src="{{ asset('img/cup-of-coffee.png') }}" width="190">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-10 col-md-8">
-                            <div id="paypal-button-post"></div>
+                            <img src="{{ asset('img/cup-of-coffee.png') }}" width="190"><br />
+                            @include('laravel-paypal::checkout.button')
                         </div>
                     </div>
                 @endif

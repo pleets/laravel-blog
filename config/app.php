@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Pleets\LaravelPayPal\LaravelPaypalProvider::class,
+        Pleets\LaravelPayPal\Providers\PayPalServiceProvider::class,
 
         /*
          * Application Service Providers...
