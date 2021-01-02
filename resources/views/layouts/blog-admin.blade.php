@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="{{ asset('img/pleets125.png') }}" type="image/x-icon" />
-    <link rel="shortcut icon" href="{{ asset('img/pleets125.png') }}" />
+    <link rel="icon" href="{{ asset('img/pleets-logo.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('img/pleets-logo.png') }}" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
