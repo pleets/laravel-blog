@@ -6,10 +6,10 @@ use App\Category;
 use App\Constants\Resource;
 use App\Facades\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Testing\TestResponse;
 use Tests\Feature\Concerns\HasAuthentication;
 use Tests\Feature\Concerns\HasAuthorization;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\TestResponse;
 
 class StoreCategoriesTest extends TestCase
 {
