@@ -4,7 +4,10 @@
             <h1 style="font-family: 'Fjalla One', sans-serif;" class="text-white">{{ $post->title }}</h1>
             <div class="row">
                 <div class="col-xs-auto text-center">
-                    <img src="{{ asset('img/authors/fermius.jpg') }}" alt="Author" class="rounded-circle" width="80" style="border: solid 2px #037466;">
+                    <img
+                        src="{{ asset('img/authors/fermius.jpg') }}"
+                        alt="Author"
+                        class="rounded-circle" width="80" style="border: solid 2px white; margin-bottom: 5px;">
                 </div>
                 <div class="col text-white pb-2">
                     <span>By</span>
@@ -20,7 +23,7 @@
         </div>
     </header>
 
-    <div class="container bg-white">
+    <div class="container bg-white" style="border-radius: 10px;">
         <div class="row">
             <div class="col-sm-9">
 
@@ -116,7 +119,7 @@
 
             </div>
             <div class="col-sm-3">
-                <div class="widget">
+                <div class="widget pt-3">
                     <h5>Categorías</h5>
                     <ul style="list-style: none; padding: 0;">
                         @foreach ($categories as $category)

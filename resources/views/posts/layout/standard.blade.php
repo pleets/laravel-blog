@@ -100,7 +100,7 @@
 
         </div>
         <div class="col-sm-3">
-            <div class="widget">
+            <div class="widget pt-3">
                 <h5>Categorías</h5>
                 <ul style="list-style: none; padding: 0;">
                     @foreach ($categories as $category)
