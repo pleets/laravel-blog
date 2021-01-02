@@ -6,7 +6,7 @@
 @endisset
 
 @section('content')
-<div class="container mt-3">
+<div class="container pt-3 bg-white">
     <div class="row">
         <div class="col-sm-9">
             @if ($posts->count())

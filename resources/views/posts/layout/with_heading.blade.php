@@ -1,18 +1,18 @@
 <article>
-    <header class="p-2" style="background-image: linear-gradient(90deg,#00ddc1,#036559);">
+    <header class="pt-2 gradient-background">
         <div class="container container-fluid">
             <h1 style="font-family: 'Fjalla One', sans-serif;" class="text-white">{{ $post->title }}</h1>
             <div class="row">
                 <div class="col-xs-auto text-center">
                     <img src="{{ asset('img/authors/fermius.jpg') }}" alt="Author" class="rounded-circle" width="80" style="border: solid 2px #037466;">
                 </div>
-                <div class="col">
+                <div class="col text-white pb-2">
                     <span>By</span>
                     <span>{{ $post->author->user->name }}</span>
                     <div>
-                        <span class="text-muted">Posted on</span>
+                        <span>Posted on</span>
                         <span class="badge badge-success">{{ $post->published_at }}</span>
-                        <span class="text-muted">in</span>
+                        <span>in</span>
                         <span class="badge badge-primary">{{ $post->category->name }}</span>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <div class="container mt-3">
+    <div class="container bg-white">
         <div class="row">
             <div class="col-sm-9">
 
