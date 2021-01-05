@@ -1,14 +1,9 @@
-/*
-
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
-
-*/
-
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
   background: #23241f;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .hljs,
