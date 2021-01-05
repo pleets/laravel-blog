@@ -6,3 +6,15 @@ h1, h2, h3, h4, h5, h6 {
 article p {
     font-family: 'Poppins', sans-serif;
 }
+
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf) format('truetype');
+    font-display: swap;
+}
+
+.roboto-mono {
+    font-family: 'Roboto Mono', monospace;
+}
