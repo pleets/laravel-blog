@@ -3,7 +3,7 @@
 @section('meta_title', 'Thank you for submitting your information')
 
 @section('content')
-    <div class="container mt-3" style="max-width: 550px;">
+    <div class="container pt-3 bg-white" style="max-width: 550px;">
         <div class="container">
             <h3>{{ __('contact.title') }}</h3>
             <p class="text-justify">
