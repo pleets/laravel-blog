@@ -53,3 +53,6 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+import fitvids from 'fitvids/dist/fitvids.min'
+window.fitvids = fitvids;
