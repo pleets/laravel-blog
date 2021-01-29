@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Helpers\Date;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -39,4 +41,41 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class, 'post_tag', 'post_id', 'tag_id');
     }
+
+    /**
+     * @param Builder $query
+     * @param string|null $term
+     * @param string $boolean
+     * @return Builder
+     */
+    public function scopeTitle(Builder $query, string $term = null, $boolean = 'and'): Builder
+    {
+        return $query->where('title', 'like', "%{$term}%", $boolean);
+    }
+
+    /**
+     * @param Builder $query
+     * @param string|null $term
+     * @param string $boolean
+     * @return Builder
+     */
+    public function scopeDescription(Builder $query, string $term = null, $boolean = 'and'): Builder
+    {
+        return $query->where('description', 'like', "%{$term}%", $boolean);
+    }
+
+    /**
+     * @param Builder $query
+     * @param string|null $term
+     * @return Builder
+     */
+    public function scopeSearch(Builder $query, string $term = null): Builder
+    {
+        if (!$term) {
+            return $query;
+        }
+
+        return $query->title($term, 'or')->description($term, 'or');
+    }
+
 }
