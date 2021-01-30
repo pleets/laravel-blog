@@ -77,5 +77,4 @@ class Post extends Model
 
         return $query->title($term, 'or')->description($term, 'or');
     }
-
 }
