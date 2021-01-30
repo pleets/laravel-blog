@@ -106,7 +106,7 @@ php artisan db:seed --class=TagsTableSeeder
 Example categories:
 
 ```bash
-php artisan db:seed --class=CategoriesTable
+php artisan db:seed --class=CategoriesTableSeeder
 ```
 
 Writer user:

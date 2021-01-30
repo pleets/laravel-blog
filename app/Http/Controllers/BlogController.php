@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -12,9 +13,9 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::orderBy('published_at', 'desc')->paginate();
+        $posts = Post::search($request->search)->orderBy('published_at', 'desc')->paginate();
         $categories = Category::all();
 
         return view('posts.index', ['posts' => $posts, 'categories' => $categories]);

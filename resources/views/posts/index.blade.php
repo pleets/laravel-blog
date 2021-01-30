@@ -5,10 +5,13 @@
     @section('meta_title', $description)
 @endisset
 
+
 @section('content')
 <div class="container pt-3 bg-white">
     <div class="row">
         <div class="col-sm-9">
+            @include('components.__search', ['route' => route('home')])
+
             @if ($posts->count())
                 @isset($showing)
                     <div class="alert alert-info">
