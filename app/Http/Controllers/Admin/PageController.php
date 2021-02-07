@@ -56,7 +56,7 @@ class PageController extends Controller
             return [
                 'process'     => 'success',
                 'page_id'     => $page->page_id,
-                'redirect_to' => route('pages.edit', $page->page_id),
+                'redirect_to' => route('admin.pages.edit', $page->page_id),
             ];
         } else {
             return ['process' => 'success'];
