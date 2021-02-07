@@ -12,6 +12,6 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .vue()
     .sass('resources/sass/app.scss', 'public/css')
-    .styles('resources/css/responsive.css', 'public/css/responsive.css')
-    .sourceMaps();
+    .styles('resources/css/responsive.css', 'public/css/responsive.css');

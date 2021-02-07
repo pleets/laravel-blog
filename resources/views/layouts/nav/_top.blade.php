@@ -16,7 +16,7 @@
                 </li>
 
                 @php
-                    $pages = \App\Page::all();
+                    $pages = \App\Models\Page::all();
                 @endphp
 
                 @if ($pages)

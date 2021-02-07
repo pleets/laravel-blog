@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Constants;
 
 class Templates
 {

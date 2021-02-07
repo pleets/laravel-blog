@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Admin\Categories;
 
-use App\Category;
+use App\Models\Category;
 use App\Constants\Resource;
 use App\Facades\UserFactory;
-use App\Post;
+use App\Models\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Testing\TestResponse;
 use Tests\Feature\Concerns\HasAuthentication;
@@ -22,7 +22,7 @@ class DestroyCategoriesTest extends TestCase
 
     private function route(): string
     {
-        $category = factory(Category::class)->create();
+        $category = Category::factory()->create();
 
         return route('admin.categories.destroy', $category);
     }
@@ -43,7 +43,7 @@ class DestroyCategoriesTest extends TestCase
     public function aUserCanDestroyACategory()
     {
         $user = UserFactory::withPermissions($this->permissions())->create();
-        $category = factory(Category::class)->create();
+        $category = Category::factory()->create();
 
         $this->actingAs($user)->delete(route('admin.categories.destroy', $category));
 
@@ -56,8 +56,8 @@ class DestroyCategoriesTest extends TestCase
     public function aUserCanNotDestroyACategoryWhenItHasRelatedPosts()
     {
         $user = UserFactory::withPermissions($this->permissions())->create();
-        $category = factory(Category::class)->create();
-        factory(Post::class)->create(['author_id' => $user->user_id, 'category_id' => $category->category_id]);
+        $category = Category::factory()->create();
+        Post::factory()->create(['author_id' => $user->user_id, 'category_id' => $category->category_id]);
 
         $response = $this->actingAs($user)->delete(route('admin.categories.destroy', $category));
 

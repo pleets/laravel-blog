@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Collection;
 use Spatie\Permission\Models\Permission;
 
@@ -30,7 +30,7 @@ class UserFactory
      */
     public function create(array $attributes = []): User
     {
-        $user = factory(User::class)->create($attributes);
+        $user = User::factory()->create($attributes);
 
         if ($this->hasPermissions()) {
             $this->createPermissions();

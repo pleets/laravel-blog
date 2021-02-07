@@ -1,6 +1,6 @@
 <?php
 
-use App\Templates;
+use App\Constants\Templates;
 
 return [
     'template' => Templates::WITH_HEADING,
