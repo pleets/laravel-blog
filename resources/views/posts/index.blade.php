@@ -21,12 +21,12 @@
                 @foreach ($posts as $post)
                     <article>
                         <div class="row">
-                            <div class="col-sm-2">
+                            <div class="col-2">
                                 <img src="{{ asset($post->image) }}" alt="post image" style="width: 100%;">
                                 <br />
                                 <br />
                             </div>
-                            <div class="col-sm-10">
+                            <div class="col-10">
                                 <h2 style="font-family: Nunito">
                                     <a href="{{ route('posts', ['title' => str_replace(' ', '-', $post->url_path)]) }}">
                                         {{ $post->title }}
