@@ -52,7 +52,7 @@
                     </article><br /><br />
                 @endforeach
 
-                {{ $posts->links() }}
+                {{ $posts->onEachSide(1)->links() }}
             @else
                 @if(isset($showing))
                     <div class="alert alert-info">
