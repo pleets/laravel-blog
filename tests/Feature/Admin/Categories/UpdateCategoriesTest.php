@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Admin\Categories;
 
-use App\Category;
+use App\Models\Category;
 use App\Constants\Resource;
 use App\Facades\UserFactory;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Testing\TestResponse;
 use Tests\Feature\Admin\Categories\Concerns\CategoryFieldsProvider;
@@ -24,7 +24,7 @@ class UpdateCategoriesTest extends TestCase
 
     private function route(): string
     {
-        $category = factory(Category::class)->create();
+        $category = Category::factory()->create();
 
         return route('admin.categories.update', $category);
     }
@@ -44,7 +44,7 @@ class UpdateCategoriesTest extends TestCase
      */
     public function anUnauthorizedUserCanNotAccessToTheRoute()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)->call(self::HTTP_METHOD, $this->route());
 
@@ -62,7 +62,7 @@ class UpdateCategoriesTest extends TestCase
     public function aUserCanUpdateCategories($field, $value)
     {
         $user = UserFactory::withPermissions($this->permissions())->create();
-        $category = factory(Category::class)->create();
+        $category = Category::factory()->create();
 
         $formData = array_replace(
             $category->only([
@@ -89,7 +89,7 @@ class UpdateCategoriesTest extends TestCase
     public function theCategoryUpdatingValidatesAllRelatedFields($field, $value)
     {
         $user = UserFactory::withPermissions($this->permissions())->create();
-        $category = factory(Category::class)->create();
+        $category = Category::factory()->create();
 
         $formData = array_replace(
             $category->only([

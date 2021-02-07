@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Admin\Categories;
 
-use App\Category;
+use App\Models\Category;
 use App\Constants\Resource;
 use App\Facades\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -21,7 +21,7 @@ class StoreCategoriesTest extends TestCase
 
     private function route(): string
     {
-        $category = factory(Category::class)->make()->toArray();
+        $category = Category::factory()->make()->toArray();
 
         return route('admin.categories.store', $category);
     }
@@ -42,7 +42,7 @@ class StoreCategoriesTest extends TestCase
     public function aUserCanStoreCategories()
     {
         $user = UserFactory::withPermissions($this->permissions())->create();
-        $category = factory(Category::class)->make()->toArray();
+        $category = Category::factory()->make()->toArray();
 
         $this->actingAs($user)->post(route('admin.categories.store', $category));
 
@@ -57,10 +57,10 @@ class StoreCategoriesTest extends TestCase
      */
     public function aUserCanNotStoreACategoryWithAnAlreadyTakenSlug()
     {
-        $category = factory(Category::class)->create();
+        $category = Category::factory()->create();
 
         $user = UserFactory::withPermissions($this->permissions())->create();
-        $category = factory(Category::class)->make(['slug' => $category->slug])->toArray();
+        $category = Category::factory()->make(['slug' => $category->slug])->toArray();
 
         $response = $this->actingAs($user)->post(route('admin.categories.store', $category));
 

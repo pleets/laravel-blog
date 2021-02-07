@@ -8,6 +8,7 @@
 .env
 .env.testing
 .phpunit.result.cache
+docker-compose.override.yml
 .idea/
 Homestead.json
 Homestead.yaml

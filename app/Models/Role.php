@@ -1,15 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Role extends Model
 {
     /**
      * The primary key for the model.
      *
      * @var string
      */
-    protected $primaryKey = 'page_id';
+    protected $primaryKey = 'role_id';
 }

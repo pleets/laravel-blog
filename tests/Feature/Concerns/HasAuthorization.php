@@ -3,7 +3,7 @@
 namespace Tests\Feature\Concerns;
 
 use App\Facades\UserFactory;
-use App\User;
+use App\Models\User;
 
 trait HasAuthorization
 {
@@ -12,7 +12,7 @@ trait HasAuthorization
      */
     public function anUnauthorizedUserCanNotAccessToTheRoute()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)->call(self::HTTP_METHOD, $this->route());
 

@@ -4,8 +4,8 @@ namespace Tests\Feature\Admin\Posts;
 
 use App\Constants\Resource;
 use App\Facades\UserFactory;
-use App\Post;
-use App\User;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -23,8 +23,8 @@ class EditPostTest extends TestCase
      */
     public function anUnauthenticatedUserCanNotAccessToEditView()
     {
-        $user = factory(User::class)->create();
-        $post = factory(Post::class)->create(['author_id' => $user->user_id]);
+        $user = User::factory()->create();
+        $post = Post::factory()->create(['author_id' => $user->user_id]);
 
         $response = $this->get($this->route($post));
 
@@ -36,10 +36,10 @@ class EditPostTest extends TestCase
      */
     public function anUnauthorizedUserCanNotAccessToEditView()
     {
-        $user = factory(User::class)->create();
-        $post = factory(Post::class)->create(['author_id' => $user->user_id]);
+        $user = User::factory()->create();
+        $post = Post::factory()->create(['author_id' => $user->user_id]);
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)->get($this->route($post));
 
@@ -52,7 +52,7 @@ class EditPostTest extends TestCase
     public function anAuthorizedUserCanAccessToEditView()
     {
         $user = UserFactory::withPermissions(Resource::POST_UPDATE)->create();
-        $post = factory(Post::class)->create(['author_id' => $user->user_id]);
+        $post = Post::factory()->create(['author_id' => $user->user_id]);
 
         $response = $this->actingAs($user)->get($this->route($post));
 
@@ -65,7 +65,7 @@ class EditPostTest extends TestCase
     public function aUserCanViewTheNecessaryFieldsInTheEditView()
     {
         $user = UserFactory::withPermissions(Resource::POST_UPDATE)->create();
-        $post = factory(Post::class)->create(['author_id' => $user->user_id]);
+        $post = Post::factory()->create(['author_id' => $user->user_id]);
 
         $response = $this->actingAs($user)->get($this->route($post));
 

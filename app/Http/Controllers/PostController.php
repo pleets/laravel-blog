@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Post;
+use App\Models\Category;
+use App\Models\Post;
 
 class PostController extends Controller
 {

@@ -1,15 +1,8 @@
 /*!
-  * Bootstrap v4.5.2 (https://getbootstrap.com/)
-  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v4.6.0 (https://getbootstrap.com/)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
 
 /*!
  * Sizzle CSS Selector Engine v2.3.5
@@ -52,7 +45,7 @@
  */
 
 /**
- * Trumbowyg v2.21.0 - A lightweight WYSIWYG editor
+ * Trumbowyg v2.23.0 - A lightweight WYSIWYG editor
  * Trumbowyg core file
  * ------------------------
  * @link http://alex-d.github.io/Trumbowyg

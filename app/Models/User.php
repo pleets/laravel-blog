@@ -1,7 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Author;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -9,6 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasFactory;
     use HasRoles;
 
     /**

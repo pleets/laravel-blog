@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Admin\Categories;
 
-use App\Category;
+use App\Models\Category;
 use App\Constants\Resource;
 use App\Facades\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -41,7 +41,7 @@ class IndexCategoriesTest extends TestCase
     {
         $user = UserFactory::withPermissions($this->permissions())->create();
 
-        $categories = factory(Category::class, 3)->create();
+        $categories = Category::factory()->count(3)->create();
 
         $response = $this->actingAs($user)->get($this->route());
         $data = $response->original->getData()['categories'];

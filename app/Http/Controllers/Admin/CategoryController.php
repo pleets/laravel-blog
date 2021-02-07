@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\Models\Category;
 use App\Constants\Resource;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-use App\Post;
+use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
